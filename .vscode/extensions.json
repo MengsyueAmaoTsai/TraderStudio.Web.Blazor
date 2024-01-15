@@ -14,5 +14,6 @@
         "ms-dotnettools.csdevkit",
         "ms-dotnettools.vscode-dotnet-runtime",
         "ms-dotnettools.vscodeintellicode-csharp",
+        "ms-dotnettools.blazorwasm-companion"
     ]
 }
