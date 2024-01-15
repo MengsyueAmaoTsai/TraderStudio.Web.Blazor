@@ -6,6 +6,14 @@ public static class WebApplicationExtensions
 {
     public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
+        var environment = builder.Environment.EnvironmentName;
+
+        builder.Configuration
+            .AddJsonFile(
+                $"appsettings.{environment}.json",
+                optional: false,
+                reloadOnChange: true);
+
         builder.Services.AddComponents();
 
         return builder;
@@ -13,7 +21,6 @@ public static class WebApplicationExtensions
 
     public static WebApplication ConfigurePipeline(this WebApplication app)
     {
-
         if (app.Environment.IsDevelopment())
         {
             app.UseWebAssemblyDebugging();

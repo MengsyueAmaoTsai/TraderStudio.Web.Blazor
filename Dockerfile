@@ -28,6 +28,8 @@ ENV PRIVATE_KEY_PATH=/app/ssl/key.pem
 
 ENV ASPNETCORE_Kestrel__Certificates__Default__Path=${CERTIFICATE_PATH}
 ENV ASPNETCORE_Kestrel__Certificates__Default__KeyPath=${PRIVATE_KEY_PATH}
+ENV ASPNETCORE_ENVIRONMENT=Development
 ENV ASPNETCORE_URLS=https://+:443;http://+:80
+
 
 ENTRYPOINT [ "dotnet", "RichillCapital.TraderStudio.Web.dll" ]

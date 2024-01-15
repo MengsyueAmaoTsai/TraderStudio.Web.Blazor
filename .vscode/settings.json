@@ -1,4 +1,11 @@
 {
+    "cSpell.words": [
+        "Mediat",
+        "Quantower",
+        "Richill",
+        "richillcapital",
+        "Swashbuckle"
+    ],
     // Docker
     "docker.commands.attach": "${containerCommand} exec -it ${containerId} ${shellCommand}",
     "docker.commands.build": "${containerCommand} build --pull --rm -f \"${dockerfile}\" -t ${tag} \"${context}\"",
@@ -223,11 +230,4 @@
     "dotnetAcquisitionExtension.existingDotnetPath": [],
     "dotnetAcquisitionExtension.installTimeoutValue": 600,
     "dotnetAcquisitionExtension.proxyUrl": "",
-    "cSpell.words": [
-        "Mediat",
-        "Quantower",
-        "Richill",
-        "richillcapital",
-        "Swashbuckle"
-    ]
 }

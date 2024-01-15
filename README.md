@@ -12,7 +12,7 @@ docker build -t richillcapital-trader-studio-web:latest -f Dockerfile .
 ```
 
 ```powershell
-docker run -d -p 80:80 -p 443:443 --name richillcapital-trader-studio-web richillcapital-trader-studio-web:latest
+docker run -d -p 99:80 -p 9999:443 --name richillcapital-trader-studio-web richillcapital-trader-studio-web:latest
 ```
 
 ## License
