@@ -1,4 +1,3 @@
-using RichillCapital.TraderStudio.Web.Client.Pages;
 using RichillCapital.TraderStudio.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +28,6 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(RichillCapital.TraderStudio.Web.Client._Imports).Assembly);
+    .AddInteractiveWebAssemblyRenderMode();
 
 app.Run();

@@ -16,8 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4C72214
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Web", "RichillCapital.TraderStudio.Web\RichillCapital.TraderStudio.Web\RichillCapital.TraderStudio.Web.csproj", "{E4A1F2D8-0A83-4E47-802E-0F281B4728DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Web.Client", "RichillCapital.TraderStudio.Web\RichillCapital.TraderStudio.Web.Client\RichillCapital.TraderStudio.Web.Client.csproj", "{DC196992-368E-4E9F-ACD9-57FDA8BD297F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,16 +26,14 @@ Global
 		{E4A1F2D8-0A83-4E47-802E-0F281B4728DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4A1F2D8-0A83-4E47-802E-0F281B4728DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4A1F2D8-0A83-4E47-802E-0F281B4728DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DC196992-368E-4E9F-ACD9-57FDA8BD297F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DC196992-368E-4E9F-ACD9-57FDA8BD297F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DC196992-368E-4E9F-ACD9-57FDA8BD297F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DC196992-368E-4E9F-ACD9-57FDA8BD297F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E4A1F2D8-0A83-4E47-802E-0F281B4728DD} = {1689EE8F-C16C-41EC-8440-A3A47C9810A6}
-		{DC196992-368E-4E9F-ACD9-57FDA8BD297F} = {1689EE8F-C16C-41EC-8440-A3A47C9810A6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9791357-B0F0-438F-89C4-4961BD2E33EF}
 	EndGlobalSection
 EndGlobal
