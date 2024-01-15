@@ -15,7 +15,7 @@
     <Rule Id="CA1011" Action="Warning" />
     <Rule Id="CA1012" Action="Warning" />
     <Rule Id="CA1013" Action="Warning" />
-    <Rule Id="CA1014" Action="Warning" />
+    <Rule Id="CA1014" Action="Info" />
     <Rule Id="CA1016" Action="Warning" />
     <Rule Id="CA1017" Action="Warning" />
     <Rule Id="CA1018" Action="Warning" />
@@ -114,7 +114,7 @@
     <Rule Id="CA1720" Action="Warning" />
     <Rule Id="CA1721" Action="Warning" />
     <Rule Id="CA1722" Action="Warning" />
-    <Rule Id="CA1724" Action="Warning" />
+    <Rule Id="CA1724" Action="Info" />
     <Rule Id="CA1725" Action="Warning" />
     <Rule Id="CA1726" Action="Warning" />
     <Rule Id="CA1800" Action="Warning" />
@@ -299,7 +299,7 @@
     <Rule Id="SA1630" Action="Warning" />
     <Rule Id="SA1631" Action="Warning" />
     <Rule Id="SA1632" Action="Warning" />
-    <Rule Id="SA1633" Action="Warning" />
+    <Rule Id="SA1633" Action="None" />
     <Rule Id="SA1634" Action="Warning" />
     <Rule Id="SA1635" Action="Warning" />
     <Rule Id="SA1636" Action="Warning" />
@@ -356,7 +356,7 @@
     <Rule Id="SA1409" Action="Warning" />
     <Rule Id="SA1410" Action="Warning" />
     <Rule Id="SA1411" Action="Warning" />
-    <Rule Id="SA1412" Action="Warning" />
+    <Rule Id="SA1412" Action="Info" />
     <Rule Id="SA1413" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.NamingRules">
@@ -379,7 +379,7 @@
     <Rule Id="SX1309S" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.OrderingRules">
-    <Rule Id="SA1200" Action="Warning" />
+    <Rule Id="SA1200" Action="Info" />
     <Rule Id="SA1201" Action="Warning" />
     <Rule Id="SA1202" Action="Warning" />
     <Rule Id="SA1203" Action="Warning" />
@@ -470,7 +470,7 @@
     <Rule Id="SA1028" Action="Warning" />
   </Rules>
   <Rules AnalyzerId="StyleCop.Analyzers" RuleNamespace="StyleCop.Analyzers.SpecialRules">
-    <Rule Id="SA0001" Action="Warning" />
+    <Rule Id="SA0001" Action="Info" />
     <Rule Id="SA0002" Action="Warning" />
   </Rules>
 </RuleSet>
