@@ -116,7 +116,7 @@
         },
         "editor.defaultFormatter": "ms-dotnettools.csharp"
     },
-    "dotnet.defaultSolution": "RichillCapital.Identity.Api.sln",
+    "dotnet.defaultSolution": "RichillCapital.TraderStudio.Web.sln",
     "dotnet.implementType.insertionBehavior": "withOtherMembersOfTheSameKind",
     "dotnet.implementType.propertyGenerationBehavior": "preferThrowingProperties",
     "dotnet.completion.provideRegexCompletions": true,
