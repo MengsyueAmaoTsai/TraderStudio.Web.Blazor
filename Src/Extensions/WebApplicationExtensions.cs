@@ -6,14 +6,6 @@ public static class WebApplicationExtensions
 {
     public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
-        var environment = builder.Environment.EnvironmentName;
-
-        builder.Configuration
-            .AddJsonFile(
-                $"appsettings.{environment}.json",
-                optional: false,
-                reloadOnChange: true);
-
         builder.Services.AddComponents();
 
         return builder;
