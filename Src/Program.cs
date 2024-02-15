@@ -6,5 +6,5 @@ var app = WebApplication
     .Build();
 
 await app
-    .ConfigurePipeline()
+    .ConfigurePipelines()
     .RunAsync();

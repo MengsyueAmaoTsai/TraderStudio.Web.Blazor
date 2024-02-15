@@ -1,4 +1,5 @@
 using RichillCapital.TraderStudio.Web.Components;
+using RichillCapital.UseCases;
 
 namespace RichillCapital.TraderStudio.Web.Extensions;
 
@@ -6,12 +7,14 @@ public static class WebApplicationExtensions
 {
     public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
     {
+        builder.Services.AddUseCases();
+
         builder.Services.AddComponents();
 
         return builder;
     }
 
-    public static WebApplication ConfigurePipeline(this WebApplication app)
+    public static WebApplication ConfigurePipelines(this WebApplication app)
     {
         if (app.Environment.IsDevelopment())
         {
