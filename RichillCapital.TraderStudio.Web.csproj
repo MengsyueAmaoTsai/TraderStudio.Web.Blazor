@@ -3,9 +3,13 @@
   <Import Project="./Solution.Packages.props" />
   <ItemGroup>
     <Compile Remove="Libs\**" />
+    <Compile Remove="Tests\**" />
     <Content Remove="Libs\**" />
+    <Content Remove="Tests\**" />
     <EmbeddedResource Remove="Libs\**" />
+    <EmbeddedResource Remove="Tests\**" />
     <None Remove="Libs\**" />
+    <None Remove="Tests\**" />
   </ItemGroup>
   <ItemGroup>
     <None Remove=".gitignore" />
