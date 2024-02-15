@@ -5,18 +5,16 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4972C6D7-2E8D-407C-A90A-64A69CCA405A}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		Dockerfile = Dockerfile
 		LICENSE = LICENSE
 		README.md = README.md
-		Solution.ruleset = Solution.ruleset
 		Solution.Build.props = Solution.Build.props
 		Solution.Packages.props = Solution.Packages.props
-		Dockerfile = Dockerfile
+		Solution.ruleset = Solution.ruleset
 		stylecop.json = stylecop.json
-		.editorconfig = .editorconfig
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{1689EE8F-C16C-41EC-8440-A3A47C9810A6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4C72214-1ACD-4D22-8AB8-1381A97E3A68}"
 EndProject
@@ -35,9 +33,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{A3AB470A-DB09-4499-9002-28913EBF163B} = {1689EE8F-C16C-41EC-8440-A3A47C9810A6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9791357-B0F0-438F-89C4-4961BD2E33EF}
