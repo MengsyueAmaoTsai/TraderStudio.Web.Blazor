@@ -2,7 +2,7 @@ namespace RichillCapital.TraderStudio.Web;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddComponents(this IServiceCollection services)
+    public static IServiceCollection AddWeb(this IServiceCollection services)
     {
         services
             .AddRazorComponents()

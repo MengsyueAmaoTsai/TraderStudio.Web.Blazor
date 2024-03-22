@@ -9,7 +9,7 @@ public static class WebApplicationExtensions
     {
         builder.Services.AddUseCases();
 
-        builder.Services.AddComponents();
+        builder.Services.AddWeb();
 
         return builder;
     }
