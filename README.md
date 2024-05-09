@@ -16,25 +16,23 @@ docker build -t trader-studio-web:latest .
 
 ## Run
 
-### Development
+### Run as Development on <https://localhost:9998> or <http://localhost:10998>
 
 ```bash
 dotnet watch run
 
 ```
 
-### Production
+### Run as Production on <http://localhost:5000>
 
 ```bash
-dotnet ./publish/RichillCapital.TraderStudio.dll
+dotnet ./publish/RichillCapital.TraderStudio.Web.dll
 ```
 
-### Docker Run
+### Run as Docker Image on <http://localhost:9998>
 
 ```bash
 docker run -d -it -p 9998:8080 --restart=always --name trader-studio-web trader-studio-web:latest
 ```
 
-Visit <https://localhost:9998> or <http://localhost:10998>
-
-Visit demo site <https://trader-studio.richillcapital.com>
+### Demo: <https://trader-studio.richillcapital.com>
