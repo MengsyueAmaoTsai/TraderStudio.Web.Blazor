@@ -2,6 +2,8 @@ using Microsoft.FluentUI.AspNetCore.Components;
 
 using RichillCapital.TraderStudio.Web.Components;
 
+using SciChartBlazor;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddComponents();
@@ -36,6 +38,10 @@ internal static class RazorComponentExtensions
             .AddInteractiveServerComponents();
 
         services.AddFluentUIComponents();
+
+        services.AddSciChart(options =>
+        {
+        });
 
         return services;
     }
