@@ -1,0 +1,41 @@
+@using RichillCapital.TraderStudio.Web.Contracts
+
+@page "/signals"
+
+<PageTitle>Signals</PageTitle>
+
+<h1>Signals</h1>
+
+@if (signals is null)
+{
+    <p><em>Loading ...</em></p>
+}
+else
+{
+    <FluentDataGrid Id="signals-grid" Items="@signals" TGridItem="SignalModel" GridTemplateColumns="1fr 1fr 1fr 1fr 1fr">
+        <PropertyColumn Title="Time" Property="@(signal => signal!.Time.ToString("yyyy-MM-dd HH:mm:ss.fff"))" Align="Align.Start"/>
+        <PropertyColumn Title="Trade Type" Property="@(signal => signal!.TradeType)" Align="Align.Start"/>
+        <PropertyColumn Title="Symbol" Property="@(signal => signal!.Symbol)" Align="Align.Start"/>
+        <PropertyColumn Title="Quantity" Property="@(signal => signal!.Quantity)" Align="Align.Start"/>
+        <PropertyColumn Title="Price" Property="@(signal => signal!.Price)" Align="Align.Start"/>
+    </FluentDataGrid>
+}
+
+@code{
+
+    private IQueryable<SignalModel>? signals;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // TODO: Replace this with a call to the server
+        signals = Enumerable.Range(1, 5).Select(index => new SignalModel
+        {
+            Time = DateTime.Now,
+            TradeType = "Buy",
+            Symbol = "AAPL",
+            Quantity = 100,
+            Price = 150.00m,
+        }).AsQueryable();
+    } 
+}
+
