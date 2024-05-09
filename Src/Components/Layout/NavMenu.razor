@@ -7,6 +7,7 @@
     <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
         <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded">
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
+            <FluentNavLink Href="signals" Icon="@(new Icons.Regular.Size20.List())" IconColor="Color.Accent">Trading Bots</FluentNavLink>
             <FluentNavLink Href="signals" Icon="@(new Icons.Regular.Size20.List())" IconColor="Color.Accent">Signals</FluentNavLink>
         </FluentNavMenu>
     </nav>
