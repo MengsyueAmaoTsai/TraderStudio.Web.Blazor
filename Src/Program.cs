@@ -1,3 +1,5 @@
+using Microsoft.FluentUI.AspNetCore.Components;
+
 using RichillCapital.TraderStudio.Web.Components;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,14 +32,18 @@ internal static class RazorComponentExtensions
 {
     internal static IServiceCollection AddComponents(this IServiceCollection services)
     {
-        services.AddRazorComponents();
+        services.AddRazorComponents()
+            .AddInteractiveServerComponents();
+
+        services.AddFluentUIComponents();
 
         return services;
     }
 
     internal static WebApplication MapComponents<TRootComponent>(this WebApplication app)
     {
-        app.MapRazorComponents<TRootComponent>();
+        app.MapRazorComponents<TRootComponent>()
+            .AddInteractiveServerRenderMode();
 
         return app;
     }
