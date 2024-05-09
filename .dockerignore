@@ -1,0 +1,11 @@
+obj/
+bin/
+.vs/
+.vscode/
+.editorconfig
+.gitignore
+LICENSE
+README.md
+stylecop.json
+Solution.ruleset
+*.props

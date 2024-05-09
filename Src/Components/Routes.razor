@@ -1,6 +1,10 @@
-﻿<Router AppAssembly="typeof(Program).Assembly">
+﻿@namespace RichillCapital.TraderStudio.Web.Components
+
+@using RichillCapital.TraderStudio.Web.Components.Layout
+
+<Router AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
+        <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
 </Router>
