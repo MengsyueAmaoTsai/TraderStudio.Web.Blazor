@@ -1,0 +1,37 @@
+name: .Net Build 
+
+on:
+  push:
+    branches: [ "master" ]
+  
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  DOTNET_VERSION: 8.0.x
+  SOLUTION_FILE: ./RichillCapital.TraderStudio.Web.sln
+  CONFIGURATION: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Setup .Net 
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+    
+    - name: Restore 
+      run: dotnet restore ${{ env.SOLUTION_FILE }}
+
+    - name: Build
+      run: dotnet build ${{ env.SOLUTION_FILE }} -c ${{ env.CONFIGURATION }} --no-restore 
+
+    - name: Test
+      run: dotnet test ${{ env.SOLUTION_FILE }} -c ${{ env.CONFIGURATION }} --no-restore --no-build --verbosity normal
+      
+    - name: Publish
+      run: dotnet publish ${{ env.SOLUTION_FILE }} -c ${{ env.CONFIGURATION }} --no-restore --no-build -o ./publish
