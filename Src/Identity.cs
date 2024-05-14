@@ -1,4 +1,4 @@
-namespace RichillCapital.TraderStudio.Web.Identity;
+namespace RichillCapital.Identity;
 
 internal static class IdentityExtensions
 {
