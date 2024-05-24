@@ -1,53 +1,66 @@
-var solutionFile = "./RichillCapital.TraderStudio.Web.sln";
-var outputDirectory = "./publish";
-var configuration = Argument("configuration", "Release");
-var project = "./RichillCapital.TraderStudio.Web.csproj";
+var solution = "./RichillCapital.TraderStudio.Web.sln";
+var buildConfiguration = Argument("configuration", "Release");
+var publishDirectory = "./publish";
 
-Task("Clean").Does(() =>
-{
-    DotNetClean(solutionFile);
-    CleanDirectory(outputDirectory);
-});
-
-Task("Restore").IsDependentOn("Clean")
+Task("Clean")
     .Does(() =>
     {
-        DotNetRestore(solutionFile);
+        DotNetClean(solution);
     });
 
-Task("Build").IsDependentOn("Restore")
+Task("Restore")
     .Does(() =>
     {
-        DotNetBuild(solutionFile, new DotNetBuildSettings()
-        {
-            Configuration = configuration,
-            NoRestore = true,
-        });
+        DotNetRestore(solution);
     });
 
-Task("Test").IsDependentOn("Build")
+Task("Build")
     .Does(() =>
     {
-        DotNetTest(solutionFile, new DotNetTestSettings()
-        {
-            Configuration = configuration,
-            NoBuild = true,
-            NoRestore = true,
-        });
+        DotNetBuild(
+            solution,
+            new DotNetBuildSettings
+            {
+                Configuration = buildConfiguration,
+                NoRestore = true,
+            });
     });
 
-Task("Publish").IsDependentOn("Test")
+Task("Test")
     .Does(() =>
     {
-        DotNetPublish(solutionFile, new DotNetPublishSettings()
-        {
-            Configuration = configuration,
-            NoBuild = true,
-            NoRestore = true,
-            OutputDirectory = outputDirectory,
-        });
+        DotNetTest(
+            solution,
+            new DotNetTestSettings
+            {
+                Configuration = buildConfiguration,
+                NoBuild = true,
+                NoRestore = true,
+            });
     });
 
-var target = Argument("target", "Publish");
+Task("Publish")
+    .Does(() =>
+    {
+        CleanDirectory(publishDirectory);
 
+        DotNetPublish(
+            solution,
+            new DotNetPublishSettings
+            {
+                Configuration = buildConfiguration,
+                NoRestore = true,
+                NoBuild = true,
+                OutputDirectory = publishDirectory,
+            });
+    });
+
+Task("Default")
+    .IsDependentOn("Clean")
+    .IsDependentOn("Restore")
+    .IsDependentOn("Build")
+    .IsDependentOn("Test")
+    .IsDependentOn("Publish");
+
+var target = Argument("target", "Default");
 RunTarget(target);

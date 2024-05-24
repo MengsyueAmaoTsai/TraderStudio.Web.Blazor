@@ -1,0 +1,31 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: 
+      - master
+
+env:
+  DOTNET_VERSION: 8.x
+  BUILD_CONFIGURATION: Release
+  CAKE_FILE: build.cake
+  BUILD_TARGET: Default
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+          
+    - name: Build and Test
+      uses: cake-build/cake-action@v2
+      with:
+        script-path: ${{ env.CAKE_FILE }}
+        target: ${{ env.BUILD_TARGET }}
+        verbosity: Diagnostic
+        arguments: |
+          configuration: ${{ env.BUILD_CONFIGURATION }}
