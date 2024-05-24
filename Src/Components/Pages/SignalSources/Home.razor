@@ -9,6 +9,9 @@
     <PropertyColumn Property="@(source => source.Id)" Title="ID" />
     <PropertyColumn Property="@(source => source.Name)" Title="Name" />
     <PropertyColumn Property="@(source => source.Description)" Title="Description" />
+
+    <PropertyColumn Property="@(source => source.WinRate * 100)" Title="Win Rate (%)" />
+    <PropertyColumn Property="@(source => source.Returns * 100)" Title="Returns (%)" />
 </FluentDataGrid>
 
 @code {
