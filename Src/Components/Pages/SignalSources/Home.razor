@@ -10,8 +10,14 @@
     <PropertyColumn Property="@(source => source.Name)" Title="Name" />
     <PropertyColumn Property="@(source => source.Description)" Title="Description" />
 
-    <PropertyColumn Property="@(source => source.WinRate * 100)" Title="Win Rate (%)" />
-    <PropertyColumn Property="@(source => source.Returns * 100)" Title="Returns (%)" />
+    <PropertyColumn Property="@(source => source.WinRate * 100)" Title="Win Rate (%)" Align="Align.End" />
+    <PropertyColumn Property="@(source => source.Returns * 100)" Title="Returns (%)" Align="Align.End" />
+
+    <TemplateColumn Title="Actions" Align="@Align.Center">
+        <FluentButton aria-label="Details" IconEnd="@(new Icons.Regular.Size16.Eye())"/>
+        <FluentButton aria-label="Upload" IconEnd="@(new Icons.Regular.Size16.ArrowUpload())"/>
+        <FluentButton aria-label="Delete" IconEnd="@(new Icons.Regular.Size16.Delete())"/>
+    </TemplateColumn>
 </FluentDataGrid>
 
 @code {
