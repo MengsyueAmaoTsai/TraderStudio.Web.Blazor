@@ -1,25 +1,29 @@
 #!/bin/bash
 
-IMAGE_NAME=trader-studio-web:latest
+SERVICE_NAME=trader-studio-web
+IMAGE_NAME=trader-studio-web
+TAG=latest
 SERVICE_PORT=9998
 CONTAINER_PORT=8080
-SERVICE_NAME=trader-studio-web
 
-case $1 in 
+case $1 in
     build)
         docker build -t $IMAGE_NAME .
         ;;
+    pull)
+        docker pull msat7201/$IMAGE_NAME:$TAG
+        ;;
     start)
-        docker run -d -it -p $SERVICE_PORT:$CONTAINER_PORT --restart=always --name $SERVICE_NAME $IMAGE_NAME
+        docker run -d -it -p $SERVICE_PORT:$CONTAINER_PORT --restart=always --name $SERVICE_NAME msat7201/$IMAGE_NAME:$TAG
         ;;
     stop)
-        docker stop $SERVICE_NAME && docker rm $SERVICE_NAME
+        docker stop $SERVICE_NAME && docker rm $SERVICE_NAME || true  
         ;;
     restart)
-        ./cmd build
+        ./cmd pull
         ./cmd stop
         ./cmd start
-        ;;    
+        ;;
     *)
         echo "Usage: $0 {start|stop|restart|build}"
         exit 1
