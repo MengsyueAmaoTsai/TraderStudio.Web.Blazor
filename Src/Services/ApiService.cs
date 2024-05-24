@@ -8,14 +8,14 @@ internal sealed class ApiService(HttpClient _httpClient) : IApiService
         string signalSourceId,
         CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetFromJsonAsync<SignalSourceDetailsResponse>($"https://localhost:10000/api/v1/signal-sources/{signalSourceId}");
+        var response = await _httpClient.GetFromJsonAsync<SignalSourceDetailsResponse>($"api/v1/signal-sources/{signalSourceId}");
 
         return response!;
     }
 
     public async Task<PagedResponse<SignalSourceResponse>> ListSignalSourcesAsync(CancellationToken cancellationToken = default)
     {
-        var response = await _httpClient.GetFromJsonAsync<PagedResponse<SignalSourceResponse>>("https://localhost:10000/api/v1/signal-sources");
+        var response = await _httpClient.GetFromJsonAsync<PagedResponse<SignalSourceResponse>>("api/v1/signal-sources");
         return response!;
     }
 }
