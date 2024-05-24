@@ -1,12 +1,13 @@
 using Microsoft.FluentUI.AspNetCore.Components;
 
 using RichillCapital.TraderStudio.Web.Components;
+using RichillCapital.TraderStudio.Web.Services;
 
 using SciChartBlazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddHttpClient();
+builder.Services.AddApiService();
 
 builder.Services.AddComponents();
 
