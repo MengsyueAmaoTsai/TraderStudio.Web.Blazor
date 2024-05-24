@@ -5,7 +5,7 @@
 @inject NavigationManager Navigation
 @inject IApiService ApiService
 
-<FluentButton Appearance="@Appearance.Accent">Create New</FluentButton>
+<FluentButton Appearance="@Appearance.Accent" @onclick="@(() => NavigateToCreatePage())">Create New</FluentButton>
     
 <FluentDataGrid Items="@signalSources" TGridItem="SignalSourceResponse">
     <PropertyColumn Property="@(source => source.Id)" Title="ID" />
@@ -31,6 +31,9 @@
 
         signalSources = pagedResponse.Items.AsQueryable();
     }
+
+    private void NavigateToCreatePage() => 
+        Navigation.NavigateTo("/signal-sources/create");
 
     private void NavigateToSignalSourceDetails(SignalSourceResponse signalSource) =>
         Navigation.NavigateTo($"/signal-sources/{signalSource.Id}");

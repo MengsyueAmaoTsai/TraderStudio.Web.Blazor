@@ -1,0 +1,11 @@
+@page "/signal-sources/create"
+@inject NavigationManager Navigation
+@rendermode InteractiveServer
+
+<h1>Create New Signal Source</h1>
+
+<FluentButton Appearance="Appearance.Accent" @onclick="@(() => Cancel())">Cancel</FluentButton>
+
+@code {
+    private void Cancel() => Navigation.NavigateTo($"/signal-sources");
+}
