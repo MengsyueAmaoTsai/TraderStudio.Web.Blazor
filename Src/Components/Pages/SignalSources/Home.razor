@@ -1,7 +1,6 @@
 @page "/signal-sources"
-@using RichillCapital.TraderStudio.Web.Services
 
-@inject IApiService Client
+@inject IApiService ApiService
 
 <FluentButton Appearance="@Appearance.Accent">Create New</FluentButton>
     
@@ -25,7 +24,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        var pagedResponse = await Client.ListSignalSourcesAsync();
+        var pagedResponse = await ApiService.ListSignalSourcesAsync();
 
         signalSources = pagedResponse.Items.AsQueryable();
     }

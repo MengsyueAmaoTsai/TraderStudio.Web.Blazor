@@ -1,0 +1,44 @@
+@page "/signal-sources/{signalSourceId}"
+@inject IApiService ApiService
+
+<h3>Signal Source Details</h3>
+
+@if (signalSource is not null)
+{
+    <h4>@signalSource.Name (@signalSource.Id)</h4>
+    <p>@signalSource.Description</p>
+
+    <FluentTabs ActiveTabId="tab-1">
+        <FluentTab Id="tab-1">
+            <Header>
+                Signal History 
+            </Header>
+            <Content>
+                <p>Signal History</p>                
+            </Content>
+        </FluentTab>
+
+        <FluentTab Id="tab-2">
+            <Header>
+                Performance Summary 
+            </Header>
+            <Content>
+                <p>Performance Summary Content</p>                
+            </Content>
+        </FluentTab>
+    </FluentTabs>
+}
+
+@code {
+    [Parameter]
+    public required string signalSourceId { get; set; }
+
+    private SignalSourceDetailsResponse signalSource { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var signalSourceResponse = await ApiService.GetSignalSourceByIdAsync(signalSourceId);
+
+        signalSource = signalSourceResponse;
+    }
+}
