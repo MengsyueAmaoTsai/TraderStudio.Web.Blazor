@@ -1,5 +1,8 @@
 @page "/signal-sources"
 
+@rendermode InteractiveServer
+
+@inject NavigationManager Navigation
 @inject IApiService ApiService
 
 <FluentButton Appearance="@Appearance.Accent">Create New</FluentButton>
@@ -13,7 +16,7 @@
     <PropertyColumn Property="@(source => source.Returns * 100)" Title="Returns (%)" Align="Align.End" />
 
     <TemplateColumn Title="Actions" Align="@Align.Center">
-        <FluentButton aria-label="Details" IconEnd="@(new Icons.Regular.Size16.Eye())"/>
+        <FluentButton aria-label="Details" IconEnd="@(new Icons.Regular.Size16.Eye())" @onclick="@(() => NavigateToSignalSourceDetails(context))"/>
         <FluentButton aria-label="Upload" IconEnd="@(new Icons.Regular.Size16.ArrowUpload())"/>
         <FluentButton aria-label="Delete" IconEnd="@(new Icons.Regular.Size16.Delete())"/>
     </TemplateColumn>
@@ -28,4 +31,7 @@
 
         signalSources = pagedResponse.Items.AsQueryable();
     }
+
+    private void NavigateToSignalSourceDetails(SignalSourceResponse signalSource) =>
+        Navigation.NavigateTo($"/signal-sources/{signalSource.Id}");
 }

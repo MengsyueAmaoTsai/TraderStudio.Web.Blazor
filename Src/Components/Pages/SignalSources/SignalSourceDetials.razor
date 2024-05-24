@@ -1,15 +1,19 @@
 @page "/signal-sources/{signalSourceId}"
+@rendermode InteractiveServer
+
 @inject IApiService ApiService
+@inject NavigationManager Navigation
 
 <h3>Signal Source Details</h3>
+<FluentButton IconEnd="@(new Icons.Regular.Size16.ArrowStepBack())" @onclick="@(() => Returns())"/>
 
 @if (signalSource is not null)
 {
     <h4>@signalSource.Name (@signalSource.Id)</h4>
     <p>@signalSource.Description</p>
 
-    <FluentTabs ActiveTabId="tab-1">
-        <FluentTab Id="tab-1">
+    <FluentTabs ActiveTabId="signal-hisotry">
+        <FluentTab Id="signal-hisotry">
             <Header>
                 Signal History 
             </Header>
@@ -18,7 +22,7 @@
             </Content>
         </FluentTab>
 
-        <FluentTab Id="tab-2">
+        <FluentTab Id="performance-summary">
             <Header>
                 Performance Summary 
             </Header>
@@ -31,14 +35,16 @@
 
 @code {
     [Parameter]
-    public required string signalSourceId { get; set; }
+    public required string SignalSourceId { get; set; }
 
-    private SignalSourceDetailsResponse signalSource { get; set; }
+    public required SignalSourceDetailsResponse signalSource { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-        var signalSourceResponse = await ApiService.GetSignalSourceByIdAsync(signalSourceId);
+        var signalSourceResponse = await ApiService.GetSignalSourceByIdAsync(SignalSourceId);
 
         signalSource = signalSourceResponse;
     }
+
+    private void Returns() => Navigation.NavigateTo($"/signal-sources");
 }
