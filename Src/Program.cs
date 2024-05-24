@@ -6,6 +6,8 @@ using SciChartBlazor;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient();
+
 builder.Services.AddComponents();
 
 var app = builder.Build();
