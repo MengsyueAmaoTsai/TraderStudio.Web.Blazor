@@ -22,4 +22,5 @@ public sealed record SignalResponse
     public required string Symbol { get; init; }
     public required decimal Quantity { get; init; }
     public required decimal Price { get; init; }
+    public required decimal Latency { get; init; }
 }
