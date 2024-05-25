@@ -4,6 +4,18 @@ namespace RichillCapital.TraderStudio.Web.Services;
 
 internal sealed class ApiService(HttpClient _httpClient) : IApiService
 {
+    public Task CreateSignalSourceAsync(string id, string name, string description, CancellationToken cancellationToken = default)
+    {
+        var signalSource = new
+        {
+            Id = id,
+            Name = name,
+            Description = description
+        };
+
+        return _httpClient.PostAsJsonAsync("api/v1/signal-sources", signalSource);
+    }
+
     public async Task<SignalSourceDetailsResponse> GetSignalSourceByIdAsync(
         string signalSourceId,
         CancellationToken cancellationToken = default)
