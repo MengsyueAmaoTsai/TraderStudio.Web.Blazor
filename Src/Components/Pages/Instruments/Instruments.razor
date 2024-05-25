@@ -1,0 +1,20 @@
+@page "/instruments"
+@inject IApiService ApiService
+
+<FluentDataGrid Items="@instruments" TGridItem="InstrumentResponse">
+    <PropertyColumn Property="@(log => log.Symbol)" Title="Symbol" />
+    <PropertyColumn Property="@(log => log.Description)" Title="Description" />
+    <PropertyColumn Property="@(log => log.Exchange)" Title="Exchange" />
+    <PropertyColumn Property="@(log => log.Type)" Title="Type" />
+</FluentDataGrid>
+
+@code {
+    public required IQueryable<InstrumentResponse> instruments { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pagedResponse = await ApiService.ListInstrumentsAsync();
+
+        instruments = pagedResponse.Items.AsQueryable();
+    }        
+}
