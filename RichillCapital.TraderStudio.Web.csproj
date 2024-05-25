@@ -14,4 +14,8 @@
     <PackageReference Include="SciChartBlazor" Version="1.5.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Src\Components\Pages\AuditLogs\" />
+  </ItemGroup>
+
 </Project>

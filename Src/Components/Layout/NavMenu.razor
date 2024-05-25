@@ -3,12 +3,18 @@
 
 <div class="navmenu">
     <input type="checkbox" title="Menu expand/collapse toggle" id="navmenu-toggle" class="navmenu-icon" />
-    <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
+    
+    <label for="navmenu-toggle" class="navmenu-icon">
+        <FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" />
+    </label>
+    
     <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
         <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded">
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
-            <FluentNavLink Href="workspace1" Icon="@(new Icons.Regular.Size20.List())" IconColor="Color.Accent">Workspace 1</FluentNavLink>
+            <FluentNavLink Href="audit-logs" Icon="@(new Icons.Regular.Size20.IotAlert())" IconColor="Color.Accent">Audit Logs</FluentNavLink>
+            <FluentNavLink Href="instruments" Icon="@(new Icons.Regular.Size20.IotAlert())" IconColor="Color.Accent">Instruments</FluentNavLink>
             <FluentNavLink Href="signal-sources" Icon="@(new Icons.Regular.Size20.IotAlert())" IconColor="Color.Accent">Signal Sources</FluentNavLink>
+            <FluentNavLink Href="workspace1" Icon="@(new Icons.Regular.Size20.List())" IconColor="Color.Accent">Workspace 1</FluentNavLink>
         </FluentNavMenu>
     </nav>
 </div>

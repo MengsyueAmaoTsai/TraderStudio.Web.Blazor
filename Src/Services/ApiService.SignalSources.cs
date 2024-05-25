@@ -1,8 +1,11 @@
 using RichillCapital.TraderStudio.Web.Contracts;
+using RichillCapital.TraderStudio.Web.Contracts.SignalSources;
 
 namespace RichillCapital.TraderStudio.Web.Services;
 
-internal sealed class ApiService(HttpClient _httpClient) : IApiService
+internal sealed partial class ApiService(
+    HttpClient _httpClient) :
+    IApiService
 {
     public Task CreateSignalSourceAsync(string id, string name, string description, CancellationToken cancellationToken = default)
     {
