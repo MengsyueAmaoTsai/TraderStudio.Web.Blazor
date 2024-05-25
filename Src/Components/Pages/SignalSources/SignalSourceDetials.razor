@@ -21,7 +21,6 @@
             <Content>
                 <FluentDataGrid Items="@signals" TGridItem="SignalResponse">
                     <PropertyColumn Property="@(source => source.Time)" Title="Time" />
-                    <PropertyColumn Property="@(source => source.SourceId)" Title="Source Id" />
                     <PropertyColumn Property="@(source => source.TradeType)" Title="Trade Type" />
                     <PropertyColumn Property="@(source => source.Symbol)" Title="Symbol" />
                     <PropertyColumn Property="@(source => source.Quantity)" Title="Quantity" />
