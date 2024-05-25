@@ -17,8 +17,16 @@
             <Header>
                 Signal History 
             </Header>
+            
             <Content>
-                <p>Signal History</p>                
+                <FluentDataGrid Items="@signals" TGridItem="SignalResponse">
+                    <PropertyColumn Property="@(source => source.Time)" Title="Time" />
+                    <PropertyColumn Property="@(source => source.SourceId)" Title="Source Id" />
+                    <PropertyColumn Property="@(source => source.TradeType)" Title="Trade Type" />
+                    <PropertyColumn Property="@(source => source.Symbol)" Title="Symbol" />
+                    <PropertyColumn Property="@(source => source.Quantity)" Title="Quantity" />
+                    <PropertyColumn Property="@(source => source.Price)" Title="Price" />
+                </FluentDataGrid>                   
             </Content>
         </FluentTab>
 
@@ -39,11 +47,14 @@
 
     public required SignalSourceDetailsResponse signalSource { get; set; }
 
+    public required IQueryable<SignalResponse> signals { get; set; }
+
     protected override async Task OnInitializedAsync()
     {
         var signalSourceResponse = await ApiService.GetSignalSourceByIdAsync(SignalSourceId);
 
         signalSource = signalSourceResponse;
+        signals = signalSource.Signals.AsQueryable();
     }
 
     private void Returns() => Navigation.NavigateTo($"/signal-sources");
