@@ -1,5 +1,6 @@
 using Microsoft.FluentUI.AspNetCore.Components;
 
+using RichillCapital.Identity;
 using RichillCapital.TraderStudio.Web.Components;
 using RichillCapital.TraderStudio.Web.Services;
 
@@ -8,6 +9,8 @@ using SciChartBlazor;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApiService();
+
+builder.Services.AddCustomAuthenticationPolicy();
 
 builder.Services.AddComponents();
 
@@ -24,6 +27,8 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseAntiforgery();
+
+app.UseIdentity();
 
 app.MapComponents<App>();
 
