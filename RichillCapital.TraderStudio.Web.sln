@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.TraderStudio.Web", "RichillCapital.TraderStudio.Web.csproj", "{68049B1E-EA70-4C95-8A1F-F77E57875350}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{B53D4ACB-82FD-45E9-A775-91803ACAE2D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Identity", "Libs\RichillCapital.Identity\RichillCapital.Identity.csproj", "{753FE024-C333-4D3D-B1DB-5547B0242978}"
+EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -33,5 +37,20 @@ Global
 		{68049B1E-EA70-4C95-8A1F-F77E57875350}.Release|x64.Build.0 = Release|Any CPU
 		{68049B1E-EA70-4C95-8A1F-F77E57875350}.Release|x86.ActiveCfg = Release|Any CPU
 		{68049B1E-EA70-4C95-8A1F-F77E57875350}.Release|x86.Build.0 = Release|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Debug|x64.Build.0 = Debug|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Debug|x86.Build.0 = Debug|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Release|x64.ActiveCfg = Release|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Release|x64.Build.0 = Release|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Release|x86.ActiveCfg = Release|Any CPU
+		{753FE024-C333-4D3D-B1DB-5547B0242978}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{753FE024-C333-4D3D-B1DB-5547B0242978} = {B53D4ACB-82FD-45E9-A775-91803ACAE2D0}
 	EndGlobalSection
 EndGlobal

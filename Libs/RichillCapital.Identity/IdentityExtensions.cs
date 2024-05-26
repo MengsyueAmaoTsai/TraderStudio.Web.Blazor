@@ -2,15 +2,17 @@ using FluentValidation;
 
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using RichillCapital.Extensions.Options;
 
 namespace RichillCapital.Identity;
 
-internal static class IdentityExtensions
+public static class IdentityExtensions
 {
-    internal static IServiceCollection AddCustomAuthenticationPolicy(this IServiceCollection services)
+    public static IServiceCollection AddTraderStudioWebAuthentication(this IServiceCollection services)
     {
         services.AddIdentityOptions();
 
@@ -53,7 +55,7 @@ internal static class IdentityExtensions
         return services;
     }
 
-    internal static WebApplication UseIdentity(this WebApplication app)
+    public static WebApplication UseTraderStudioWebIdentity(this WebApplication app)
     {
         app.UseAuthentication();
         app.UseAuthorization();
