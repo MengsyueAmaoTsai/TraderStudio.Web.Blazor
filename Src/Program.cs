@@ -1,8 +1,15 @@
+using RichillCapital.Logging;
 using RichillCapital.Identity;
 using RichillCapital.TraderStudio.Web.Components;
 using RichillCapital.TraderStudio.Web.Services;
 
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// Infrastructure - Logging
+builder.Services.AddSerilog();
+builder.WebHost.UseTraderStudioWebLogger();
 
 // Infrastructure - Identity
 builder.Services.AddTraderStudioWebAuthentication();

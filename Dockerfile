@@ -12,6 +12,7 @@ ARG APP_NAME=RichillCapital.TraderStudio.Web
 
 COPY ./build.cake ./${APP_NAME}.sln ./${APP_NAME}.csproj ./
 COPY ./Libs/RichillCapital.Identity/RichillCapital.Identity.csproj ./Libs/RichillCapital.Identity/
+COPY ./Libs/RichillCapital.Logging/RichillCapital.Logging.csproj ./Libs/RichillCapital.Logging/
 RUN dotnet cake --target restore 
 
 # Build and Publish Source Code
