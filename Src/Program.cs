@@ -41,7 +41,7 @@ app.UseStaticFiles();
 
 app.UseCookiePolicy();
 
-// app.UseAntiforgery();
+app.UseAntiforgery();
 
 app.UseTraderStudioWebIdentity();
 
