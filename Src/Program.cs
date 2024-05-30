@@ -19,10 +19,15 @@ builder.Services.AddTraderStudioWebAuthentication();
 builder.Services.AddApiService();
 
 // Presentation - Blazor Components
-builder.Services.AddTraderStudioWebCookiePolicy();
+builder.Services.AddSecurity();
 builder.Services.AddComponents();
 
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
 
 if (!app.Environment.IsDevelopment())
 {
@@ -36,7 +41,7 @@ app.UseStaticFiles();
 
 app.UseCookiePolicy();
 
-app.UseAntiforgery();
+// app.UseAntiforgery();
 
 app.UseTraderStudioWebIdentity();
 
