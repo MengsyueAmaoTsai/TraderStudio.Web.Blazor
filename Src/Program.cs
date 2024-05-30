@@ -1,6 +1,7 @@
 using RichillCapital.Logging;
 using RichillCapital.Identity;
 using RichillCapital.TraderStudio.Web.Components;
+using RichillCapital.TraderStudio.Web.Security;
 using RichillCapital.TraderStudio.Web.Services;
 
 using Serilog;
@@ -18,6 +19,7 @@ builder.Services.AddTraderStudioWebAuthentication();
 builder.Services.AddApiService();
 
 // Presentation - Blazor Components
+builder.Services.AddTraderStudioWebCookiePolicy();
 builder.Services.AddComponents();
 
 var app = builder.Build();
@@ -31,6 +33,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+
+app.UseCookiePolicy();
 
 app.UseAntiforgery();
 
