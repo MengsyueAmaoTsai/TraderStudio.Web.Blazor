@@ -6,6 +6,8 @@
 @inject IApiService ApiService
 @inject NavigationManager Navigation
 
+<FluentLabel Typo="Typography.H2">Users</FluentLabel>
+
 <FluentDataGrid Items="users">
     <PropertyColumn Property="@(user => user.Id)"/>
     <PropertyColumn Property="@(user => user.Email)"/>
