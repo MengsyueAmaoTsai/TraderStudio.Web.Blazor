@@ -41,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseCookiePolicy();
 
+// UseRouting
 app.UseAntiforgery();
 
 app.UseTraderStudioWebIdentity();

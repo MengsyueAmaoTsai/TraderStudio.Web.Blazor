@@ -25,10 +25,10 @@ internal static class ServiceExtensions
             .GetRequiredService<IOptions<ApiServerOptions>>()
             .Value;
 
-        services.AddHttpClient<IApiService, ApiService>(client =>
+        services.AddHttpClient<IApiService, ApiService>((provider, client) =>
         {
             client.BaseAddress = new Uri(apiServerOptions.BaseAddress);
-            client.Timeout = new TimeSpan(0, 0, 30);
+            client.Timeout = TimeSpan.FromSeconds(10);
             client.DefaultRequestHeaders.Clear();
         });
 
