@@ -1,6 +1,6 @@
 namespace RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
 
-public sealed record AccountResponse
+public record AccountResponse
 {
     public required string Id { get; init; }
 

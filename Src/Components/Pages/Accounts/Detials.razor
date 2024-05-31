@@ -1,0 +1,27 @@
+@page "/accounts/{accountId}"
+@rendermode InteractiveServer
+
+@using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts
+
+@inject IApiService ApiService
+
+<h1>@accountId</h1>
+
+@if (account is not null)
+{
+    <FluentStack Orientation="Orientation.Vertical">
+        <h1>@account.Name (@account.Id)</h1>
+    </FluentStack>
+}
+
+@code {
+    [Parameter]
+    public required string accountId { get; set; }
+
+    private AccountDetailsResponse? account { get; set; } = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        account = await ApiService.GetAccountByIdAsync(accountId, CancellationToken.None);
+    }
+}
