@@ -4,6 +4,7 @@ using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Executions;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Instruments;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
+using RichillCapital.TraderStudio.Web.Services.Contracts.SignalSources;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Users;
 using RichillCapital.TraderStudio.Web.Src.Services.Contracts;
 
@@ -82,6 +83,12 @@ internal sealed partial class ApiService(
             HttpMethod.Get,
             "api/v1/executions");
 
+    public async Task<PagedResponse<SignalSourceResponse>> ListSignalSourcesAsync(
+        CancellationToken cancellationToken = default) =>
+        await SendRequestAsync<PagedResponse<SignalSourceResponse>>(
+            HttpMethod.Get,
+            "api/v1/signal-sources");
+
     private async Task<TResponse> SendRequestAsync<TResponse>(
         HttpMethod method,
         string path)
@@ -104,7 +111,7 @@ internal sealed partial class ApiService(
             return default!;
         }
 
-        var content = await response.Content.ReadFromJsonAsync<TResponse>(cancellationToken: cancellationToken);
+        var content = await response.Content.ReadFromJsonAsync<TResponse>(cancellationToken);
 
         _logger.LogInformation(
             "Request to {RequestUri} completed successfully",

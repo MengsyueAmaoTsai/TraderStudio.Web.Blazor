@@ -2,6 +2,7 @@ using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Executions;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Instruments;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
+using RichillCapital.TraderStudio.Web.Services.Contracts.SignalSources;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Users;
 using RichillCapital.TraderStudio.Web.Src.Services.Contracts;
 
@@ -21,4 +22,7 @@ internal interface IApiService
     Task<string> CreateOrderAsync(CreateOrderRequest request, CancellationToken cancellationToken = default);
 
     Task<PagedResponse<ExecutionResponse>> ListExecutionsAsync(CancellationToken cancellationToken = default);
+
+
+    Task<PagedResponse<SignalSourceResponse>> ListSignalSourcesAsync(CancellationToken cancellationToken = default);
 }
