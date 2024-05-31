@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
+using RichillCapital.TraderStudio.Web.Services.Contracts.AuditLogs;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Executions;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Instruments;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
@@ -15,6 +16,11 @@ internal sealed partial class ApiService(
     HttpClient _httpClient) :
     IApiService
 {
+    public async Task<PagedResponse<AuditLogResponse>> ListAuditLogsAsync(CancellationToken cancellationToken = default) =>
+        await SendRequestAsync<PagedResponse<AuditLogResponse>>(
+            HttpMethod.Get,
+            "api/v1/audit-logs");
+
     public async Task<PagedResponse<UserResponse>> ListUsersAsync(CancellationToken cancellationToken = default) =>
         await SendRequestAsync<PagedResponse<UserResponse>>(
             HttpMethod.Get,

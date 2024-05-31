@@ -1,4 +1,5 @@
 using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
+using RichillCapital.TraderStudio.Web.Services.Contracts.AuditLogs;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Executions;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Instruments;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
@@ -10,6 +11,7 @@ namespace RichillCapital.TraderStudio.Web.Services;
 
 internal interface IApiService
 {
+    Task<PagedResponse<AuditLogResponse>> ListAuditLogsAsync(CancellationToken cancellationToken = default);
     Task<PagedResponse<UserResponse>> ListUsersAsync(CancellationToken cancellationToken = default);
     Task<UserDetailsResponse> GetUserByIdAsync(string userId, CancellationToken cancellationToken = default);
 

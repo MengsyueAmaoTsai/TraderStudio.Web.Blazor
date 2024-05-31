@@ -12,6 +12,7 @@
     <nav class="sitenav" aria-labelledby="main-menu" onclick="document.getElementById('navmenu-toggle').click();">
         <FluentNavMenu Id="main-menu" Collapsible="true" Width="250" Title="Navigation menu" @bind-Expanded="expanded">
             <FluentNavLink Href="/" Match="NavLinkMatch.All" Icon="@(new Icons.Regular.Size20.Home())" IconColor="Color.Accent">Home</FluentNavLink>
+            <FluentNavLink Href="audit-logs" Icon="@(new Icons.Regular.Size20.PeopleToolbox())" IconColor="Color.Accent">Audit Logs</FluentNavLink>
             <FluentNavLink Href="users" Icon="@(new Icons.Regular.Size20.PeopleToolbox())" IconColor="Color.Accent">Users</FluentNavLink>
             <FluentNavLink Href="instruments" Icon="@(new Icons.Regular.Size20.PeopleToolbox())" IconColor="Color.Accent">Instruments</FluentNavLink>
             <FluentNavLink Href="accounts" Icon="@(new Icons.Regular.Size20.Wallet())" IconColor="Color.Accent">Accounts</FluentNavLink>
