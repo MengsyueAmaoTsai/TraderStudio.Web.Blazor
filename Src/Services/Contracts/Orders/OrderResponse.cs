@@ -6,6 +6,8 @@ public record OrderResponse
 
     public required string AccountId { get; init; }
 
+    public required DateTimeOffset Time { get; init; }
+
     public required string TradeType { get; init; }
 
     public required string Type { get; init; }
