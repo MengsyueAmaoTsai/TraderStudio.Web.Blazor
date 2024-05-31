@@ -1,9 +1,7 @@
 namespace RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
 
-public record OrderResponse
+public sealed class CreateOrderRequest
 {
-    public required string Id { get; init; }
-
     public required string AccountId { get; init; }
 
     public required string TradeType { get; init; }
@@ -17,4 +15,9 @@ public record OrderResponse
     public required decimal Price { get; init; }
 
     public required string TimeInForce { get; init; }
+}
+
+public sealed record CreateOrderResponse
+{
+    public required string Id { get; init; }
 }

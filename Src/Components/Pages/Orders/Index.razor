@@ -1,0 +1,25 @@
+@page "/orders"
+@rendermode InteractiveServer
+
+@using RichillCapital.TraderStudio.Web.Services.Contracts.Orders
+
+@inject IApiService ApiService
+@inject NavigationManager Navigation
+
+<FluentDataGrid Items="orders">
+    <PropertyColumn Property="@(order => order.Id)"/>
+
+    <TemplateColumn>
+        <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
+    </TemplateColumn>
+</FluentDataGrid>
+
+@code {
+    private IQueryable<OrderResponse> orders { get; set; } = new List<OrderResponse>().AsQueryable();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pagination = await ApiService.ListOrdersAsync(CancellationToken.None);
+        orders = pagination.Items.AsQueryable(); 
+    }
+}

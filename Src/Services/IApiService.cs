@@ -1,4 +1,5 @@
 using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
+using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Users;
 using RichillCapital.TraderStudio.Web.Src.Services.Contracts;
 
@@ -11,4 +12,16 @@ internal interface IApiService
 
     Task<PagedResponse<AccountResponse>> ListAccountsAsync(CancellationToken cancellationToken = default);
     Task<AccountDetailsResponse> GetAccountByIdAsync(string accountId, CancellationToken cancellationToken = default);
+
+    Task<PagedResponse<OrderResponse>> ListOrdersAsync(CancellationToken cancellationToken = default);
+
+    Task<string> CreateOrderAsync(
+            string accountId,
+            string tradeType,
+            string type,
+            string symbol,
+            decimal quantity,
+            decimal price,
+            string timeInForce,
+            CancellationToken cancellationToken = default);
 }
