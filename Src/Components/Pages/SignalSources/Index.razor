@@ -6,7 +6,7 @@
 @inject IApiService ApiService
 @inject NavigationManager Navigation
 
-<FluentDataGrid Items="signalSources">
+<FluentDataGrid TGridItem="SignalSourceResponse" Items="SignalSources">
     <PropertyColumn Property="@(source => source.Id)"/>
     <PropertyColumn Property="@(source => source.Name)"/>
     <PropertyColumn Property="@(source => source.Description)"/>
@@ -17,12 +17,13 @@
 </FluentDataGrid>
 
 @code {
-    private IQueryable<SignalSourceResponse> signalSources { get; set; } = new List<SignalSourceResponse>().AsQueryable();
+    private IQueryable<SignalSourceResponse> SignalSources { get; set; } = 
+        new List<SignalSourceResponse>().AsQueryable();
 
     protected override async Task OnInitializedAsync()
     {
-        var pagination = await ApiService.ListSignalSourcesAsync(CancellationToken.None);
-        signalSources = pagination.Items.AsQueryable(); 
+        var pagedResponse = await ApiService.ListSignalSourcesAsync(CancellationToken.None);
+        SignalSources = pagedResponse.Items.AsQueryable(); 
     }
 
     private void NavigateToDetails(SignalSourceResponse source)
