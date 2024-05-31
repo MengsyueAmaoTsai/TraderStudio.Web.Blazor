@@ -1,0 +1,22 @@
+@page "/accounts"
+@rendermode InteractiveServer
+
+@using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts
+
+@inject IApiService ApiService
+@inject NavigationManager Navigation
+
+<FluentDataGrid Items="accounts">
+    <PropertyColumn Property="@(account => account.Id)"/>
+    <PropertyColumn Property="@(account => account.Name)"/>
+</FluentDataGrid>
+
+@code {
+    private IQueryable<AccountResponse> accounts { get; set; } = new List<AccountResponse>().AsQueryable();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pagination = await ApiService.ListAccountsAsync(CancellationToken.None);
+        accounts = pagination.Items.AsQueryable(); 
+    }
+}

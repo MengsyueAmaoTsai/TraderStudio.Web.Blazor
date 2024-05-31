@@ -1,5 +1,4 @@
-using System.Text.Json;
-
+using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Users;
 using RichillCapital.TraderStudio.Web.Src.Services.Contracts;
 
@@ -15,6 +14,15 @@ internal sealed partial class ApiService(
         response.EnsureSuccessStatusCode();
 
         var content = await response.Content.ReadFromJsonAsync<PagedResponse<UserResponse>>(cancellationToken: cancellationToken);
+        return content!;
+    }
+
+    public async Task<PagedResponse<AccountResponse>> ListAccountsAsync(CancellationToken cancellationToken = default)
+    {
+        var response = await _httpClient.GetAsync("api/v1/accounts", cancellationToken);
+        response.EnsureSuccessStatusCode();
+
+        var content = await response.Content.ReadFromJsonAsync<PagedResponse<AccountResponse>>(cancellationToken: cancellationToken);
         return content!;
     }
 }
