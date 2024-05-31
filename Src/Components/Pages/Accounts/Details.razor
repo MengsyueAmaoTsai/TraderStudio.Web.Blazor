@@ -24,10 +24,6 @@
                 <PropertyColumn Property="@(order => order.Price)"/>
                 <PropertyColumn Property="@(order => order.TimeInForce)"/>
                 <PropertyColumn Property="@(order => order.Id)"/>
-            
-                <TemplateColumn>
-                    <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
-                </TemplateColumn>        
             </FluentDataGrid>
         </FluentTab>
         
@@ -41,14 +37,17 @@
                 <PropertyColumn Property="@(execution => execution.Commission)" />
                 <PropertyColumn Property="@(execution => execution.Tax)" />
                 <PropertyColumn Property="@(execution => execution.Id)" />
-                <TemplateColumn>
-                    <FluentButton Appearance="Appearance.Accent">Details</FluentButton>
-                </TemplateColumn>
             </FluentDataGrid>
         </FluentTab>
         
         <FluentTab Id="tab-positions" Label="Positions" Icon="@(new Icons.Regular.Size20.Wallet())">
-            No positions.
+            <FluentDataGrid Items="account.Positions.AsQueryable()">
+                <PropertyColumn Property="@(position => position.Id)" />
+                <PropertyColumn Property="@(position => position.Side)" />
+                <PropertyColumn Property="@(position => position.Symbol)" />
+                <PropertyColumn Property="@(position => position.Quantity)" />
+                <PropertyColumn Property="@(position => position.Price)" />
+            </FluentDataGrid>
         </FluentTab>
         
         <FluentTab Id="tab-trades" Label="Trades" Icon="@(new Icons.Regular.Size20.Wallet())">
