@@ -50,30 +50,20 @@ internal sealed partial class ApiService(
             "api/v1/orders");
 
     public async Task<string> CreateOrderAsync(
-        string accountId,
-        string tradeType,
-        string type,
-        string symbol,
-        decimal quantity,
-        decimal price,
-        string timeInForce,
+        CreateOrderRequest request,
         CancellationToken cancellationToken = default)
     {
         var response = await _httpClient.PostAsJsonAsync(
             "api/v1/orders",
-            new CreateOrderRequest
-            {
-                AccountId = accountId,
-                TradeType = tradeType,
-                Type = type,
-                Symbol = symbol,
-                Quantity = quantity,
-                Price = price,
-                TimeInForce = timeInForce
-            },
+            request,
             cancellationToken);
 
-        response.EnsureSuccessStatusCode();
+        if (!response.IsSuccessStatusCode)
+        {
+            await HandleErrorAsync(response);
+
+            return string.Empty;
+        }
 
         var result = await response.Content.ReadFromJsonAsync<CreateOrderResponse>(cancellationToken);
 

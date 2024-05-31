@@ -2,22 +2,17 @@ namespace RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
 
 public sealed class CreateOrderRequest
 {
-    public required string AccountId { get; init; }
+    public string AccountId { get; set; } = string.Empty;
 
-    public required string TradeType { get; init; }
+    public string TradeType { get; set; } = string.Empty;
 
-    public required string Type { get; init; }
+    public string OrderType { get; set; } = string.Empty;
 
-    public required string Symbol { get; init; }
+    public string Symbol { get; set; } = string.Empty;
 
-    public required decimal Quantity { get; init; }
+    public decimal Quantity { get; set; }
 
-    public required decimal Price { get; init; }
+    public decimal Price { get; set; }
 
-    public required string TimeInForce { get; init; }
-}
-
-public sealed record CreateOrderResponse
-{
-    public required string Id { get; init; }
+    public string TimeInForce { get; set; } = string.Empty;
 }

@@ -6,6 +6,7 @@
 @inject IApiService ApiService
 @inject NavigationManager Navigation
 
+
 <FluentDataGrid Items="orders">
     <PropertyColumn Property="@(order => order.Id)"/>
     <PropertyColumn Property="@(order => order.TradeType)"/>

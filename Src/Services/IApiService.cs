@@ -15,13 +15,5 @@ internal interface IApiService
 
     Task<PagedResponse<OrderResponse>> ListOrdersAsync(CancellationToken cancellationToken = default);
 
-    Task<string> CreateOrderAsync(
-            string accountId,
-            string tradeType,
-            string type,
-            string symbol,
-            decimal quantity,
-            decimal price,
-            string timeInForce,
-            CancellationToken cancellationToken = default);
+    Task<string> CreateOrderAsync(CreateOrderRequest request, CancellationToken cancellationToken = default);
 }
