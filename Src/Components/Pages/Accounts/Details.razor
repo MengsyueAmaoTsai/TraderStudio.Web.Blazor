@@ -15,24 +15,35 @@
 
     <FluentTabs>
         <FluentTab Id="tab-orders" Label="Orders" Icon="@(new Icons.Regular.Size20.Wallet())">
-
-        <FluentDataGrid Items="account.Orders.AsQueryable()">
-            <PropertyColumn Property="@(order => order.Id)"/>
-            <PropertyColumn Property="@(order => order.TradeType)"/>
-            <PropertyColumn Property="@(order => order.Type)"/>
-            <PropertyColumn Property="@(order => order.Symbol)"/>
-            <PropertyColumn Property="@(order => order.Quantity)"/>
-            <PropertyColumn Property="@(order => order.Price)"/>
-            <PropertyColumn Property="@(order => order.TimeInForce)"/>
+            <FluentDataGrid Items="account.Orders.AsQueryable()">
+                <PropertyColumn Property="@(order => order.Id)"/>
+                <PropertyColumn Property="@(order => order.TradeType)"/>
+                <PropertyColumn Property="@(order => order.Type)"/>
+                <PropertyColumn Property="@(order => order.Symbol)"/>
+                <PropertyColumn Property="@(order => order.Quantity)"/>
+                <PropertyColumn Property="@(order => order.Price)"/>
+                <PropertyColumn Property="@(order => order.TimeInForce)"/>
             
-            <TemplateColumn>
-                <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
-            </TemplateColumn>        
-        </FluentDataGrid>
+                <TemplateColumn>
+                    <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
+                </TemplateColumn>        
+            </FluentDataGrid>
         </FluentTab>
         
         <FluentTab Id="tab-executions" Label="Executions" Icon="@(new Icons.Regular.Size20.Wallet())">
-            No executions.
+            <FluentDataGrid Items="account.Executions.AsQueryable()">
+                <PropertyColumn Property="@(execution => execution.Id)" />
+                <PropertyColumn Property="@(execution => execution.Time)" />
+                <PropertyColumn Property="@(execution => execution.TradeType)" />
+                <PropertyColumn Property="@(execution => execution.Symbol)" />
+                <PropertyColumn Property="@(execution => execution.Quantity)" />
+                <PropertyColumn Property="@(execution => execution.Price)" />
+                <PropertyColumn Property="@(execution => execution.Commission)" />
+                <PropertyColumn Property="@(execution => execution.Tax)" />
+                <TemplateColumn>
+                    <FluentButton Appearance="Appearance.Accent">Details</FluentButton>
+                </TemplateColumn>
+            </FluentDataGrid>
         </FluentTab>
         
         <FluentTab Id="tab-positions" Label="Positions" Icon="@(new Icons.Regular.Size20.Wallet())">
