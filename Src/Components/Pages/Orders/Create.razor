@@ -1,5 +1,5 @@
 @page "/orders/create"
-@rendermode InteractiveServer
+@rendermode @(new InteractiveAutoRenderMode(prerender: false))
 
 @using RichillCapital.TraderStudio.Web.Services.Contracts.Orders
 @using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts

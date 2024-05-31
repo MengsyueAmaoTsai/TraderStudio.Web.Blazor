@@ -1,4 +1,6 @@
 ﻿@page "/"
+@rendermode @(new InteractiveAutoRenderMode(prerender: false))
+
 @using Microsoft.AspNetCore.Authorization
 
 <PageTitle>@Assembly.GetName().Name</PageTitle>

@@ -9,7 +9,8 @@ internal static class RazorComponentExtensions
     internal static IServiceCollection AddComponents(this IServiceCollection services)
     {
         services.AddRazorComponents()
-            .AddInteractiveServerComponents();
+            .AddInteractiveServerComponents()
+            .AddInteractiveWebAssemblyComponents();
 
         services.AddFluentUIComponents();
 
@@ -24,6 +25,7 @@ internal static class RazorComponentExtensions
     {
         app.MapRazorComponents<TRootComponent>()
             .AddInteractiveServerRenderMode()
+            .AddInteractiveWebAssemblyRenderMode()
             .RequireAuthorization();
 
         return app;
