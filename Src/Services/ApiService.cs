@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
+using RichillCapital.TraderStudio.Web.Services.Contracts.Instruments;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Users;
 using RichillCapital.TraderStudio.Web.Src.Services.Contracts;
@@ -27,6 +28,11 @@ internal sealed partial class ApiService(
         var content = await response.Content.ReadFromJsonAsync<UserDetailsResponse>(cancellationToken: cancellationToken);
         return content!;
     }
+
+    public async Task<PagedResponse<InstrumentResponse>> ListInstrumentsAsync(CancellationToken cancellationToken = default) =>
+        await SendRequestAsync<PagedResponse<InstrumentResponse>>(
+            HttpMethod.Get,
+            "api/v1/instruments");
 
     public async Task<PagedResponse<AccountResponse>> ListAccountsAsync(CancellationToken cancellationToken = default) =>
         await SendRequestAsync<PagedResponse<AccountResponse>>(
