@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 using RichillCapital.TraderStudio.Web.Services.Contracts.Accounts;
+using RichillCapital.TraderStudio.Web.Services.Contracts.Executions;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Instruments;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Orders;
 using RichillCapital.TraderStudio.Web.Services.Contracts.Users;
@@ -75,6 +76,11 @@ internal sealed partial class ApiService(
 
         return result!.Id;
     }
+
+    public async Task<PagedResponse<ExecutionResponse>> ListExecutionsAsync(CancellationToken cancellationToken = default) =>
+        await SendRequestAsync<PagedResponse<ExecutionResponse>>(
+            HttpMethod.Get,
+            "api/v1/executions");
 
     private async Task<TResponse> SendRequestAsync<TResponse>(
         HttpMethod method,

@@ -1,0 +1,30 @@
+﻿@page "/executions"
+@rendermode InteractiveServer
+
+@using RichillCapital.TraderStudio.Web.Services.Contracts.Executions
+
+@inject IApiService ApiService
+
+<FluentDataGrid Items="executions">
+    <PropertyColumn Property="@(execution => execution.Id)" />
+    <PropertyColumn Property="@(execution => execution.AccountId)" />
+    <PropertyColumn Property="@(execution => execution.Time)" />
+    <PropertyColumn Property="@(execution => execution.TradeType)" />
+    <PropertyColumn Property="@(execution => execution.Symbol)" />
+    <PropertyColumn Property="@(execution => execution.Quantity)" />
+    <PropertyColumn Property="@(execution => execution.Price)" />
+    <PropertyColumn Property="@(execution => execution.Commission)" />
+    <PropertyColumn Property="@(execution => execution.Tax)" />
+</FluentDataGrid>
+
+
+@code {
+    private IQueryable<ExecutionResponse> executions { get; set; } = new List<ExecutionResponse>().AsQueryable();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pagination = await ApiService.ListExecutionsAsync(CancellationToken.None);
+
+        executions = pagination.Items.AsQueryable();
+    }
+}
