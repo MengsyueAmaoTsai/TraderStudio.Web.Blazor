@@ -8,6 +8,8 @@
 
 <FluentDataGrid Items="signalSources">
     <PropertyColumn Property="@(source => source.Id)"/>
+    <PropertyColumn Property="@(source => source.Name)"/>
+    <PropertyColumn Property="@(source => source.Description)"/>
 
     <TemplateColumn>
         <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
