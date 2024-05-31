@@ -39,7 +39,7 @@ public static class IdentityExtensions
                 options.Authority = identityOptions.OpenIdConnect.Authority;
                 options.ClientId = identityOptions.OpenIdConnect.ClientId;
                 options.ClientSecret = identityOptions.OpenIdConnect.ClientSecret;
-                options.RequireHttpsMetadata = false;
+                options.RequireHttpsMetadata = identityOptions.OpenIdConnect.RequireHttpsMetadata;
 
                 options.ResponseType = "code";
                 options.SaveTokens = true;

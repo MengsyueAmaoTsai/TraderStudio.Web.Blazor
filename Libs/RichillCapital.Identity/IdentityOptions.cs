@@ -14,4 +14,5 @@ internal sealed record OpenIdConnectOptions
     public required string ClientId { get; init; }
 
     public required string ClientSecret { get; init; }
+    public required bool RequireHttpsMetadata { get; init; }
 }
