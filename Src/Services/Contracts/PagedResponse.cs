@@ -1,4 +1,4 @@
-namespace RichillCapital.TraderStudio.Web.Contracts;
+namespace RichillCapital.TraderStudio.Web.Src.Services.Contracts;
 
 public sealed record PagedResponse<TResponse>
 {

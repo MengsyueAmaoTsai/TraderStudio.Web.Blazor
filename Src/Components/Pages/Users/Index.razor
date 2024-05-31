@@ -1,0 +1,23 @@
+﻿@page "/users"
+@rendermode InteractiveServer
+
+@using RichillCapital.TraderStudio.Web.Services.Contracts.Users
+
+@inject IApiService ApiService
+@inject NavigationManager Navigation
+
+<FluentDataGrid Items="users">
+    <PropertyColumn Property="@(user => user.Id)"/>
+    <PropertyColumn Property="@(user => user.Email)"/>
+    <PropertyColumn Property="@(user => user.Name)"/>
+</FluentDataGrid>
+
+@code {
+    private IQueryable<UserResponse> users { get; set; } = new List<UserResponse>().AsQueryable();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var pagination = await ApiService.ListUsersAsync(CancellationToken.None);
+        users = pagination.Items.AsQueryable(); 
+    }
+}
