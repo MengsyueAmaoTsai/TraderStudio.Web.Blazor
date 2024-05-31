@@ -12,6 +12,24 @@
     <FluentStack Orientation="Orientation.Vertical">
         <h1>@account.Name (@account.Id)</h1>
     </FluentStack>
+
+    <FluentTabs>
+        <FluentTab Id="tab-orders" Label="Orders" Icon="@(new Icons.Regular.Size20.Wallet())">
+            No orders.
+        </FluentTab>
+        
+        <FluentTab Id="tab-executions" Label="Executions" Icon="@(new Icons.Regular.Size20.Wallet())">
+            No executions.
+        </FluentTab>
+        
+        <FluentTab Id="tab-positions" Label="Positions" Icon="@(new Icons.Regular.Size20.Wallet())">
+            No positions.
+        </FluentTab>
+        
+        <FluentTab Id="tab-trades" Label="Trades" Icon="@(new Icons.Regular.Size20.Wallet())">
+            No trades.
+        </FluentTab>
+    </FluentTabs>
 }
 
 @code {

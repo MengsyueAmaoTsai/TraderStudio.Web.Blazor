@@ -9,6 +9,10 @@
 <FluentDataGrid Items="accounts">
     <PropertyColumn Property="@(account => account.Id)"/>
     <PropertyColumn Property="@(account => account.Name)"/>
+    
+    <TemplateColumn>
+        <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
+    </TemplateColumn>        
 </FluentDataGrid>
 
 @code {

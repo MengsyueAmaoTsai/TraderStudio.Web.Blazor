@@ -1,0 +1,39 @@
+@page "/users/{userId}"
+@rendermode InteractiveServer
+
+@using RichillCapital.TraderStudio.Web.Services.Contracts.Users
+
+@inject IApiService ApiService
+
+@if (user is null)
+{
+    <h1>Not found with user id: @userId</h1>
+}
+else
+{
+    <FluentStack Orientation="Orientation.Vertical">
+        <label>Id: @user.Id</label>
+        <label>Email: @user.Email</label>
+        <label>Name: @user.Name</label>
+
+    </FluentStack>
+    
+    <FluentTabs>
+        <FluentTab Id="tab-accounts" Label="Accounts" Icon="@(new Icons.Regular.Size20.Wallet())">
+            No accounts.
+        </FluentTab>
+    </FluentTabs>    
+}
+
+
+@code {
+    [Parameter]
+    public required string userId { get; set; }
+
+    private UserDetailsResponse? user { get; set; } = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        user = await ApiService.GetUserByIdAsync(userId, CancellationToken.None);
+    }
+}

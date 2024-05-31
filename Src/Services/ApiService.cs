@@ -17,6 +17,15 @@ internal sealed partial class ApiService(
         return content!;
     }
 
+    public async Task<UserDetailsResponse> GetUserByIdAsync(string userId, CancellationToken cancellationToken = default)
+    {
+        var response = await _httpClient.GetAsync($"api/v1/users/{userId}", cancellationToken);
+        response.EnsureSuccessStatusCode();
+
+        var content = await response.Content.ReadFromJsonAsync<UserDetailsResponse>(cancellationToken: cancellationToken);
+        return content!;
+    }
+
     public async Task<PagedResponse<AccountResponse>> ListAccountsAsync(CancellationToken cancellationToken = default)
     {
         var response = await _httpClient.GetAsync("api/v1/accounts", cancellationToken);
