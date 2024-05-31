@@ -8,6 +8,14 @@
 
 <FluentDataGrid Items="orders">
     <PropertyColumn Property="@(order => order.Id)"/>
+    <PropertyColumn Property="@(order => order.TradeType)"/>
+    <PropertyColumn Property="@(order => order.Type)"/>
+    <PropertyColumn Property="@(order => order.Symbol)"/>
+    <PropertyColumn Property="@(order => order.Quantity)"/>
+    <PropertyColumn Property="@(order => order.Price)"/>
+    <PropertyColumn Property="@(order => order.TimeInForce)"/>
+
+    <PropertyColumn Property="@(order => order.AccountId)"/>
 
     <TemplateColumn>
         <FluentButton Appearance="Appearance.Accent">Details</FluentButton> 
