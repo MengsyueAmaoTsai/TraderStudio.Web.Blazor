@@ -1,11 +1,26 @@
 ﻿@page "/"
 @using Microsoft.AspNetCore.Authorization
 
-<PageTitle>Home</PageTitle>
+<PageTitle>@Assembly.GetName().Name</PageTitle>
 
-<h1>@Assembly.GetName().Name</h1>
+<FluentCard>
+    <h1 class="card-header">
+        @Assembly.GetName().Name v. @Assembly.GetName().Version
+    </h1>
 
-<h2>Assembly Version: v.@Assembly.GetName().Version</h2>
+    <FluentStack Orientation="Orientation.Vertical">
+            Developed by:
+            <h3>Mengsyue Amao Tsai</h3>
+            
+            <div class="text-center">@("@MengsyueAmaoTsai")</div>
+            
+            <a href="https://github.com/MengsyueAmaoTsai/TraderStudio.Web.Blazor" target="_blank">
+                TraderStudio.Web
+            </a>
+            
+            <div class="text-center">@DateTimeOffset.UtcNow</div>
+    </FluentStack>
+</FluentCard>
 
 @code {
     private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
