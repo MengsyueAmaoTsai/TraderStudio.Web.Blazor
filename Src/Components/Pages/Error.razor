@@ -2,6 +2,9 @@
 @rendermode @(new InteractiveAutoRenderMode(prerender: false))
 
 @using System.Diagnostics
+@using Microsoft.AspNetCore.Diagnostics
+
+@inject ILogger<Error> Logger
 
 <PageTitle>Error</PageTitle>
 
@@ -33,6 +36,15 @@
     private string? RequestId { get; set; }
     private bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
-    protected override void OnInitialized() =>
+    protected override void OnInitialized()
+    {
         RequestId = Activity.Current?.Id ?? HttpContext?.TraceIdentifier;
+
+        var error = HttpContext?.Features.Get<IExceptionHandlerFeature>();
+
+        if (error != null)
+        {
+            Logger.LogError(error.Error, "An error occurred while processing your request.");
+        }
+    }
 }
