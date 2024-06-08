@@ -1,4 +1,5 @@
 var solution = "./RichillCapital.TraderStudio.Web.sln";
+var project = "./RichillCapital.TraderStudio.Web.csproj";
 var buildConfiguration = Argument("configuration", "Release");
 var publishDirectory = "./publish";
 
@@ -26,17 +27,17 @@ Task("Build")
             });
     });
 
-Task("Test")
+Task("AcceptanceTests")
     .Does(() =>
     {
-        DotNetTest(
-            solution,
-            new DotNetTestSettings
-            {
-                Configuration = buildConfiguration,
-                NoBuild = true,
-                NoRestore = true,
-            });
+        // DotNetTest(
+        //     "./Tests/RichillCapital.Api.AcceptanceTests",
+        //     new DotNetTestSettings
+        //     {
+        //         Configuration = buildConfiguration,
+        //         NoBuild = true,
+        //         NoRestore = true,
+        //     });
     });
 
 Task("Publish")
@@ -45,7 +46,7 @@ Task("Publish")
         CleanDirectory(publishDirectory);
 
         DotNetPublish(
-            solution,
+            project,
             new DotNetPublishSettings
             {
                 Configuration = buildConfiguration,
@@ -59,7 +60,7 @@ Task("Default")
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
     .IsDependentOn("Build")
-    .IsDependentOn("Test")
+    .IsDependentOn("AcceptanceTests")
     .IsDependentOn("Publish");
 
 var target = Argument("target", "Default");

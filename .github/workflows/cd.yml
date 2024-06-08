@@ -1,9 +1,9 @@
-name: Continuous Deployment
+name: ASP.NET Blazor Continuous Deployment
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 
 env:
     IMAGE_NAME: trader-studio-web

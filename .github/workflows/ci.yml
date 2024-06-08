@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: ASP.NET Blazor Continuous Integration
 
 on:
   push:
@@ -6,8 +6,7 @@ on:
       - master
 
 env:
-  DOTNET_VERSION: 8.x
-  BUILD_CONFIGURATION: Release
+  BUILD_CONFIGURATION: Debug
   CAKE_FILE: build.cake
   BUILD_TARGET: Default
 
@@ -26,3 +25,9 @@ jobs:
         verbosity: Diagnostic
         arguments: |
           configuration: ${{ env.BUILD_CONFIGURATION }}
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: RichillCapital.Api-${{ env.Build_Configuration }}-${{ matrix.os }}
+        path: ./publish          
