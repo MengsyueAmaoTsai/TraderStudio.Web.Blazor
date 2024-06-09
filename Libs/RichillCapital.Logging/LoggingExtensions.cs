@@ -19,7 +19,6 @@ public static class LoggingExtensions
 
     public static IWebHostBuilder UseTraderStudioWebLogger(this IWebHostBuilder builder)
     {
-
         builder.ConfigureLogging((context, logging) =>
         {
             logging.AddSerilog();

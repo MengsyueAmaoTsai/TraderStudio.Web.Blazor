@@ -11,8 +11,11 @@ RUN dotnet tool restore
 ARG APP_NAME=RichillCapital.TraderStudio.Web
 
 COPY ./build.cake ./${APP_NAME}.sln ./${APP_NAME}.csproj ./
-COPY ./Libs/RichillCapital.Identity/RichillCapital.Identity.csproj ./Libs/RichillCapital.Identity/
-COPY ./Libs/RichillCapital.Logging/RichillCapital.Logging.csproj ./Libs/RichillCapital.Logging/
+COPY ./Libs/RichillCapital.Contracts/*.csproj ./Libs/RichillCapital.Contracts/
+COPY ./Libs/RichillCapital.Domain/*.csproj ./Libs/RichillCapital.Domain/
+COPY ./Libs/RichillCapital.UseCases/*.csproj ./Libs/RichillCapital.UseCases/
+COPY ./Libs/RichillCapital.Logging/*.csproj ./Libs/RichillCapital.Logging/
+COPY ./Libs/RichillCapital.Identity/*.csproj ./Libs/RichillCapital.Identity/
 RUN dotnet cake --target restore 
 
 # Build and Publish Source Code

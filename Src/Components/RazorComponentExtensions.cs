@@ -25,8 +25,7 @@ internal static class RazorComponentExtensions
     {
         app.MapRazorComponents<TRootComponent>()
             .AddInteractiveServerRenderMode()
-            .AddInteractiveWebAssemblyRenderMode()
-            .RequireAuthorization();
+            .AddInteractiveWebAssemblyRenderMode();
 
         return app;
     }
