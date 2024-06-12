@@ -1,25 +1,19 @@
-using RichillCapital.Logging;
+using RichillCapital.Contracts;
 using RichillCapital.Identity;
+using RichillCapital.Logging;
 using RichillCapital.TraderStudio.Web.Components;
-using RichillCapital.TraderStudio.Web.Security;
-using RichillCapital.TraderStudio.Web.Services;
 
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Infrastructure - Logging
-builder.Services.AddSerilog();
 builder.WebHost.UseTraderStudioWebLogger();
+builder.Services.AddSerilog();
 
 // Infrastructure - Identity
-builder.Services.AddTraderStudioWebAuthentication();
+builder.Services.AddTraderStudioWebIdentity();
 
-// Infrastructure - API Service
-builder.Services.AddApiService();
-
-// Presentation - Blazor Components
-builder.Services.AddSecurity();
 builder.Services.AddComponents();
 
 var app = builder.Build();
@@ -31,7 +25,9 @@ if (app.Environment.IsDevelopment())
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
+    app.UseExceptionHandler(
+        PageRoutes.Error,
+        createScopeForErrors: true);
     app.UseHsts();
 }
 
@@ -41,10 +37,12 @@ app.UseStaticFiles();
 
 app.UseCookiePolicy();
 
-// UseRouting
+app.UseRouting();
+
 app.UseAntiforgery();
 
-app.UseTraderStudioWebIdentity();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapComponents<App>();
 
