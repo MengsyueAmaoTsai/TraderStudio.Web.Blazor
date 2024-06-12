@@ -30,7 +30,7 @@ jobs:
     
     - name: Build Docker Image
       run: |
-        docker build -t ${{ env.IMAGE_NAME }}:${{ env.TAG }} . 
+        docker build -t ${{ env.Image_Name }}:${{ env.Tag }} . 
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
