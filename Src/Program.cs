@@ -1,5 +1,4 @@
 using RichillCapital.Contracts;
-using RichillCapital.Identity;
 using RichillCapital.Logging;
 using RichillCapital.TraderStudio.Web.Components;
 
@@ -11,9 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.WebHost.UseTraderStudioWebLogger();
 builder.Services.AddSerilog();
 
-// Infrastructure - Identity
-builder.Services.AddTraderStudioWebIdentity();
-
+// Presentation - Razor Components
 builder.Services.AddComponents();
 
 var app = builder.Build();
@@ -40,9 +37,6 @@ app.UseCookiePolicy();
 app.UseRouting();
 
 app.UseAntiforgery();
-
-app.UseAuthentication();
-app.UseAuthorization();
 
 app.MapComponents<App>();
 
