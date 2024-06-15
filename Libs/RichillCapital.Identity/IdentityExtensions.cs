@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 using RichillCapital.Extensions.Options;
+using RichillCapital.UseCases.Common;
 
 namespace RichillCapital.Identity;
 
@@ -11,15 +12,19 @@ public static class IdentityExtensions
 {
     public static IServiceCollection AddTraderStudioWebIdentity(this IServiceCollection services)
     {
+        // Register options validator
         services.AddValidatorsFromAssembly(
-            typeof(IdentityExtensions).Assembly, 
+            typeof(IdentityExtensions).Assembly,
             includeInternalTypes: true);
 
+        // Register identity options
         services.AddOptionsWithFluentValidation<IdentityOptions>(IdentityOptions.SectionKey);
 
+        // Get options and configure Identity
         using var scope = services.BuildServiceProvider().CreateScope();
         var identityOptions = scope.ServiceProvider.GetRequiredService<IOptions<IdentityOptions>>().Value;
 
+        // Authentication
         services
             .AddAuthentication(options =>
             {
@@ -42,6 +47,10 @@ public static class IdentityExtensions
                 options.TokenValidationParameters.NameClaimType = "name";
                 options.RequireHttpsMetadata = identityOptions.RequireHttpsMetadata;
             });
+
+        // Current user context
+        services.AddHttpContextAccessor();
+        services.AddScoped<ICurrentUser, CurrentWebUser>();
 
         return services;
     }
