@@ -29,10 +29,10 @@ public static class IdentityExtensions
             .AddAuthentication(options =>
             {
                 options.DefaultScheme = RichillCapitalAuthenticationSchemes.DefaultCookieScheme;
-                options.DefaultChallengeScheme = RichillCapitalAuthenticationSchemes.Default;
+                options.DefaultChallengeScheme = RichillCapitalAuthenticationSchemes.DefaultOpenIdConnectScheme;
             })
             .AddCookie(RichillCapitalAuthenticationSchemes.DefaultCookieScheme)
-            .AddOpenIdConnect(RichillCapitalAuthenticationSchemes.Default, options =>
+            .AddOpenIdConnect(RichillCapitalAuthenticationSchemes.DefaultOpenIdConnectScheme, options =>
             {
                 options.SignInScheme = RichillCapitalAuthenticationSchemes.DefaultCookieScheme;
                 options.Authority = identityOptions.Authority;
