@@ -40,8 +40,6 @@ public static class IdentityExtensions
                 options.ClientSecret = identityOptions.ClientSecret;
                 options.ResponseType = "code";
                 options.Scope.Add("openid");
-                options.Scope.Add("profile");
-                options.Scope.Add("offline_access");
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.RequireHttpsMetadata = identityOptions.RequireHttpsMetadata;
