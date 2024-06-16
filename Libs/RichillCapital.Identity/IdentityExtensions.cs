@@ -28,13 +28,13 @@ public static class IdentityExtensions
         services
             .AddAuthentication(options =>
             {
-                options.DefaultScheme = RichillCapitalAuthenticationSchemes.Cookie;
+                options.DefaultScheme = RichillCapitalAuthenticationSchemes.DefaultCookieScheme;
                 options.DefaultChallengeScheme = RichillCapitalAuthenticationSchemes.Default;
             })
-            .AddCookie(RichillCapitalAuthenticationSchemes.Cookie)
+            .AddCookie(RichillCapitalAuthenticationSchemes.DefaultCookieScheme)
             .AddOpenIdConnect(RichillCapitalAuthenticationSchemes.Default, options =>
             {
-                options.SignInScheme = RichillCapitalAuthenticationSchemes.Cookie;
+                options.SignInScheme = RichillCapitalAuthenticationSchemes.DefaultCookieScheme;
                 options.Authority = identityOptions.Authority;
                 options.ClientId = identityOptions.ClientId;
                 options.ClientSecret = identityOptions.ClientSecret;
