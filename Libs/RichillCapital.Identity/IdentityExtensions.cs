@@ -44,7 +44,6 @@ public static class IdentityExtensions
                 options.Scope.Add("offline_access");
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
-                options.TokenValidationParameters.NameClaimType = "name";
                 options.RequireHttpsMetadata = identityOptions.RequireHttpsMetadata;
             });
 
