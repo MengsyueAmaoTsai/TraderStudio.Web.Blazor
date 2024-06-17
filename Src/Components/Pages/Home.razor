@@ -1,30 +1,26 @@
 ﻿@using Microsoft.AspNetCore.Authorization
+@using RichillCapital.UseCases.Common
+@using System.Security.Claims
 
 @page "/"
 @rendermode @(new InteractiveAutoRenderMode(prerender: false))
 @attribute [Authorize]
 
-<PageTitle>@Assembly.GetName().Name</PageTitle>
+@inject ICurrentUser CurrentUser
 
-<FluentCard>
-    <h1 class="card-header">
-        @Assembly.GetName().Name v. @Assembly.GetName().Version
-    </h1>
+@if (CurrentUser.IsAuthenticated)
+{
+    <FluentCard>
+        <h3>Claims</h3>
+    </FluentCard>
 
-    <FluentStack Orientation="Orientation.Vertical">
-            Developed by:
-            <h3>Mengsyue Amao Tsai</h3>
-            
-            <div class="text-center">@("@MengsyueAmaoTsai")</div>
-            
-            <a href="https://github.com/MengsyueAmaoTsai/TraderStudio.Web.Blazor" target="_blank">
-                TraderStudio.Web
-            </a>
-            
-            <div class="text-center">@DateTimeOffset.UtcNow</div>
-    </FluentStack>
-</FluentCard>
+    <FluentCard>
+        <h3>Properties</h3>
+    </FluentCard>
+}
 
 @code {
-    private static readonly Assembly Assembly = Assembly.GetExecutingAssembly();
+    protected override async Task OnInitializedAsync()
+    {
+    }
 }
