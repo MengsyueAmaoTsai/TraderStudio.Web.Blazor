@@ -2,6 +2,7 @@ using RichillCapital.Contracts;
 using RichillCapital.Identity;
 using RichillCapital.Logging;
 using RichillCapital.TraderStudio.Web.Components;
+using RichillCapital.TraderStudio.Web.Middlewares;
 
 using Serilog;
 
@@ -16,8 +17,11 @@ builder.Services.AddTraderStudioWebIdentity();
 
 // Presentation - Razor Components
 builder.Services.AddComponents();
+builder.Services.AddMiddlewares();
 
 var app = builder.Build();
+
+app.UseDebuggingRequestMiddleware();
 
 if (app.Environment.IsDevelopment())
 {

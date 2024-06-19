@@ -7,5 +7,11 @@ namespace RichillCapital.Identity;
 internal static class ClaimsPrincipalExtensions
 {
     public static UserId GetId(this ClaimsPrincipal user) =>
-        UserId.From(user.Claims.First(claim => claim.Type == "sub").Value).Value;
+        UserId
+            .From(user.Claims
+                .First(
+                    claim => claim.Type == "sub" ||
+                    claim.Type == ClaimTypes.NameIdentifier)
+                .Value)
+            .Value;
 }
