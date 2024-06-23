@@ -1,27 +1,39 @@
-name: ASP.NET Blazor Continuous Deployment
+name: RichillCapital.TraderStudio.Web CD
 
 on:
   push:
     tags:
       - '*'
-
 env:
-    Image_Name: trader-studio-web
-    Tag: latest
+    PROJECT_PATH: ./RichillCapital.TraderStudio.Web.csproj
+    IMAGE_NAME: trader-studio-web
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Get Version
+      id: version
+      run: echo "::set-output name=version::$(git describe --tags --abbrev=0)"
     
+    - name: Update Version
+      run: |
+        sudo apt-get install -y xmlstarlet
+        assemblyVersion=${{ steps.version.outputs.version }}
+        xmlstarlet ed --inplace -u "/Project/PropertyGroup/AssemblyVersion" -v "${assemblyVersion}" ${{ env.PROJECT_PATH }}    
+
     - name: Build Docker Image
       run: |
-        docker build -t ${{ env.Image_Name }}:${{ env.Tag }} . 
-        docker tag ${{ env.Image_Name }}:${{ env.Tag }} ${{ secrets.DOCKER_USERNAME }}/${{ env.Image_Name }}:${{ env.Tag }}
+        docker build -t ${{ env.IMAGE_NAME }}:latest . 
+        docker tag ${{ env.IMAGE_NAME }}:latest ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
-    - name: Push to Docker Hub
+    - name: Push Docker Image
       run: |
         echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
-        docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.Image_Name }}:${{ env.Tag }}
+        docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
