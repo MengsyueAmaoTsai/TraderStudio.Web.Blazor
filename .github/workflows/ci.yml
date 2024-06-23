@@ -47,7 +47,7 @@ jobs:
         target: ${{ env.TARGET }}
         verbosity: Diagnostic
         arguments: |
-          configuration: ${{ env.CONFIGuRATION }}
+          configuration: ${{ env.CONFIGURATION }}
     
     - name: Build Docker Image
       run: |
