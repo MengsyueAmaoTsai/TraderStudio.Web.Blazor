@@ -1,0 +1,30 @@
+﻿@namespace RichillCapital.TraderStudio.Web.Components.Layout
+
+@inherits LayoutComponentBase
+
+<FluentLayout>
+    <FluentHeader>
+        RichillCapital Trader Studio
+    </FluentHeader>
+
+    <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+        <NavMenu />
+        <FluentBodyContent Class="body-content">
+            <div class="content">
+                @Body
+            </div>
+        </FluentBodyContent>
+    </FluentStack>
+    
+    <FluentFooter>
+        <a href="https://www.fluentui-blazor.net" target="_blank">Fluent UI Documentation</a>
+        <FluentSpacer />
+        <a>Assembly Version: </a>
+    </FluentFooter>
+</FluentLayout>
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

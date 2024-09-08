@@ -1,0 +1,4 @@
+{
+  "dotnet.defaultSolution": "./RichillCapital.TraderStudio.Web.sln",
+  "cSpell.words": ["Antiforgery", "ASPNETCORE", "Blazor", "Hsts", "Serilog"]
+}
