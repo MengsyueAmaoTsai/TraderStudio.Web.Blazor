@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichillCapital.TraderStudio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libs", "Libs", "{F6E10BFD-2F40-47A9-B97D-31737188CF2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Domain", "Libs\RichillCapital.Domain\RichillCapital.Domain.csproj", "{4A7DEBF2-5701-495D-A6C5-466A4D16349B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichillCapital.Domain", "Libs\RichillCapital.Domain\RichillCapital.Domain.csproj", "{4A7DEBF2-5701-495D-A6C5-466A4D16349B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.UseCases", "Libs\RichillCapital.UseCases\RichillCapital.UseCases.csproj", "{922113D8-D44F-4D10-AD94-BBAFEA57511E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichillCapital.UseCases", "Libs\RichillCapital.UseCases\RichillCapital.UseCases.csproj", "{922113D8-D44F-4D10-AD94-BBAFEA57511E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RichillCapital.Infrastructure", "Libs\RichillCapital.Infrastructure\RichillCapital.Infrastructure.csproj", "{F8E43AF5-D206-4D07-8041-0047C4313DC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RichillCapital.Infrastructure", "Libs\RichillCapital.Infrastructure\RichillCapital.Infrastructure.csproj", "{F8E43AF5-D206-4D07-8041-0047C4313DC4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{ABEF8C84-EC4E-44BD-B5B0-E1B77F069809}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,12 +77,13 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {19C415CA-2721-4790-BE8D-332D840DCFF0}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{68049B1E-EA70-4C95-8A1F-F77E57875350} = {ABEF8C84-EC4E-44BD-B5B0-E1B77F069809}
 		{4A7DEBF2-5701-495D-A6C5-466A4D16349B} = {F6E10BFD-2F40-47A9-B97D-31737188CF2B}
 		{922113D8-D44F-4D10-AD94-BBAFEA57511E} = {F6E10BFD-2F40-47A9-B97D-31737188CF2B}
 		{F8E43AF5-D206-4D07-8041-0047C4313DC4} = {F6E10BFD-2F40-47A9-B97D-31737188CF2B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19C415CA-2721-4790-BE8D-332D840DCFF0}
 	EndGlobalSection
 EndGlobal
