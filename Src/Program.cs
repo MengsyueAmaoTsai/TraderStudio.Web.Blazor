@@ -18,6 +18,18 @@ builder.Services.AddCustomIdentity();
 builder.Services.AddComponents();
 builder.Services.AddMiddlewares();
 
+builder.Services.AddCors(builder =>
+{
+    builder
+        .AddDefaultPolicy(policy =>
+        {
+            policy
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin();
+        });
+});
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -40,6 +52,8 @@ app.UseStaticFiles();
 app.UseCookiePolicy();
 
 app.UseRouting();
+
+app.UseCors();
 
 app.UseAntiforgery();
 app.UseAuthentication();
