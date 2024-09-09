@@ -32,6 +32,8 @@ builder.Services.AddCors(builder =>
 
 var app = builder.Build();
 
+app.UseRequestDebuggingMiddleware();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
