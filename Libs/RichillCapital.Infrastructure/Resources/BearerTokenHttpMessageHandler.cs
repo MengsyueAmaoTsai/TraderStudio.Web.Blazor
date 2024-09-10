@@ -18,15 +18,23 @@ internal sealed class BearerTokenHttpMessageHandler(
     {
         var context = _httpContextAccessor.HttpContext;
 
-        if (context is not null)
+        if (context is null)
         {
-            var accessToken = await context.GetTokenAsync(OpenIdConnectParameterNames.AccessToken);
-            var identityToken = await context.GetTokenAsync(OpenIdConnectParameterNames.IdToken);
-            var refreshToken = await context.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
-            var expiresTimeUtc = await context.GetTokenAsync("expires_at");
-
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            return await base.SendAsync(request, cancellationToken);
         }
+
+        var tokensResult = await context.GetTokensAsync();
+
+        if (tokensResult.IsFailure)
+        {
+            _logger.LogError("Failed to get tokens from HttpContext. {error}", tokensResult.Error);
+
+            return await base.SendAsync(request, cancellationToken);
+        }
+
+        var tokens = tokensResult.Value;
+
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokens.AccessToken);
 
         return await base.SendAsync(request, cancellationToken);
     }
