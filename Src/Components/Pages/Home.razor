@@ -6,19 +6,6 @@
 @attribute [Authorize]
 
 @inject ILogger<Home> Logger
-@inject IResourceService ResourceService
 
 @code {
-    protected override async void OnInitialized()
-    {
-        var result = await ResourceService.ListSignalSourcesAsync();
-
-        if (result.IsFailure)
-        {
-            Logger.LogError("Failed to load signal sources");
-        }
-
-        var sources = result.Value;
-        Logger.LogInformation("Signal sources loaded: {count}", sources.Count());
-    }
 }    
