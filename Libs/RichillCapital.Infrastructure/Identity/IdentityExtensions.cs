@@ -34,8 +34,13 @@ public static class IdentityExtensions
                 options.ClientId = identityOptions.ClientId;
                 options.ClientSecret = identityOptions.ClientSecret;
                 options.ResponseType = "code";
+
                 options.Scope.Add("openid");
                 options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.Scope.Add("offline_access");
+                options.Scope.Add("RichillCapital.Api");
+
                 options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
                 options.RequireHttpsMetadata = identityOptions.RequireHttpsMetadata;
