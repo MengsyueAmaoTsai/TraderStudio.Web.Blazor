@@ -32,6 +32,8 @@ internal sealed class BearerTokenHttpMessageHandler(
 
         var tokens = tokensResult.Value;
 
+        _logger.LogInformation("Setting Bearer token {accessToken} for request.", tokens.AccessToken);
+
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", tokens.AccessToken);
 
         return await base.SendAsync(request, cancellationToken);
