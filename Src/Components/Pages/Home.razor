@@ -1,8 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Authorization
 @using System.Security.Claims
+@using RichillCapital.Infrastructure.Resources
 
 @page "/"
 @attribute [Authorize]
 
+@inject ILogger<Home> Logger
+@inject IResourceService ResourceService
+
 @code {
-}
+    protected override async void OnInitialized()
+    {
+        Logger.LogInformation("Home page initialized");
+    }
+}    

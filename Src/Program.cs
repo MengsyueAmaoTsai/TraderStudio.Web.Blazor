@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.HttpOverrides;
 
 using RichillCapital.Infrastructure.Identity;
 using RichillCapital.Infrastructure.Logging;
+using RichillCapital.Infrastructure.Resources;
 using RichillCapital.TraderStudio.Web.Components;
 using RichillCapital.TraderStudio.Web.Middlewares;
 
@@ -15,6 +16,9 @@ builder.Services.AddSerilog();
 
 // Infrastructure - Identity
 builder.Services.AddCustomIdentity();
+
+// Infrastructure - Resources
+builder.Services.AddResourceApiService();
 
 // Presentation - Razor Components
 builder.Services.AddComponents();
