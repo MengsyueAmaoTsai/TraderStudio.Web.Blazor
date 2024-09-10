@@ -17,13 +17,16 @@ public static class ResourceExtensions
         var resourceOptions = scope.ServiceProvider.GetRequiredService<IOptions<ResourceOptions>>().Value;
 
         services.AddScoped<ITokenManager, TokenManager>();
+        services.AddTransient<BearerTokenHttpMessageHandler>();
 
-        services.AddHttpClient<IResourceService, ResourceService>(client =>
-        {
-            client.BaseAddress = new Uri(resourceOptions.BaseAddress);
-            client.Timeout = TimeSpan.FromSeconds(30);
-            client.DefaultRequestHeaders.Clear();
-        });
+        services
+            .AddHttpClient<IResourceService, ResourceService>(client =>
+            {
+                client.BaseAddress = new Uri(resourceOptions.BaseAddress);
+                client.Timeout = TimeSpan.FromSeconds(30);
+                client.DefaultRequestHeaders.Clear();
+            })
+            .AddHttpMessageHandler<BearerTokenHttpMessageHandler>();
 
         return services;
     }

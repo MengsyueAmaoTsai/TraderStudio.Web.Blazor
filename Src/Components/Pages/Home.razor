@@ -11,6 +11,14 @@
 @code {
     protected override async void OnInitialized()
     {
-        Logger.LogInformation("Home page initialized");
+        var result = await ResourceService.ListSignalSourcesAsync();
+
+        if (result.IsFailure)
+        {
+            Logger.LogError("Failed to load signal sources");
+        }
+
+        var sources = result.Value;
+        Logger.LogInformation("Signal sources loaded: {count}", sources.Count());
     }
 }    
