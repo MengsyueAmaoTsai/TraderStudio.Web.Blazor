@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.HttpOverrides;
+
 using RichillCapital.Infrastructure.Identity;
 using RichillCapital.Infrastructure.Logging;
 using RichillCapital.TraderStudio.Web.Components;
@@ -30,7 +32,17 @@ builder.Services.AddCors(builder =>
         });
 });
 
+builder.Services
+    .Configure<ForwardedHeadersOptions>(options =>
+    {
+        options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+        options.KnownNetworks.Clear();
+        options.KnownProxies.Clear();
+    });
+
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 app.UseRequestDebuggingMiddleware();
 
