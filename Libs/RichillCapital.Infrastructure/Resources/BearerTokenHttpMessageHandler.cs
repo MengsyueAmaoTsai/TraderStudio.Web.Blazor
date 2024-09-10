@@ -12,7 +12,9 @@ internal sealed class BearerTokenHttpMessageHandler(
     IHttpContextAccessor _httpContextAccessor) :
     DelegatingHandler
 {
-    protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    protected override async Task<HttpResponseMessage> SendAsync(
+        HttpRequestMessage request,
+        CancellationToken cancellationToken)
     {
         var context = _httpContextAccessor.HttpContext;
 
@@ -23,10 +25,7 @@ internal sealed class BearerTokenHttpMessageHandler(
             var refreshToken = await context.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
             var expiresTimeUtc = await context.GetTokenAsync("expires_at");
 
-            if (request.Headers.Authorization is null)
-            {
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
-            }
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
         }
 
         return await base.SendAsync(request, cancellationToken);
