@@ -1,9 +1,7 @@
 using System.Net.Http.Headers;
 
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace RichillCapital.Infrastructure.Resources;
 
