@@ -1,0 +1,55 @@
+@page "/about"
+
+@using Microsoft.AspNetCore.Authentication
+@using Microsoft.AspNetCore.Authorization
+@using System.Runtime.InteropServices
+
+@attribute [Authorize]
+
+@inject ILogger<About> Logger
+@inject IWebHostEnvironment HostEnvironment
+
+<h2>About</h2>
+
+<div>
+    <h3>Application Information</h3>
+    
+    <div class="app-info-item">
+        <div>Assembly name:</div>
+        <div>@assemblyName</div>
+    </div>
+
+    <div class="app-info-item">
+        <div>Assembly version:</div>
+        <div>@assemblyVersion</div>
+    </div>
+
+    <div class="app-info-item">
+        <div>DotNet version:</div>
+        <div>@dotNetVersion</div>
+    </div>    
+
+    
+    <div class="app-info-item">
+        <div>Environment:</div>
+        <div>@environment</div>
+    </div>    
+    
+    <div class="app-info-item">
+        <div>Runtime identifier:</div>
+        <div>@runtimeIdentifier</div>
+    </div>     
+</div>
+
+@code {
+    private string assemblyName = Assembly.GetEntryAssembly()?.GetName().Name ?? string.Empty;
+    private string assemblyVersion = Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? string.Empty;
+    private string dotNetVersion = RuntimeInformation.FrameworkDescription;
+    private string runtimeIdentifier = RuntimeInformation.RuntimeIdentifier;
+    private string environment = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        environment = HostEnvironment.EnvironmentName;
+    }
+}    
