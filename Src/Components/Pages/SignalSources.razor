@@ -1,0 +1,45 @@
+@page "/signal-sources"
+
+<FluentDataGrid Items="@signalSources">
+    <PropertyColumn Property="@(prop => prop.Id)" />
+    <PropertyColumn Property="@(prop => prop.Name)" />
+    <PropertyColumn Property="@(prop => prop.Description)" />
+    <PropertyColumn Property="@(prop => prop.Visibility)" />
+    <PropertyColumn Property="@(prop => prop.CreatedTimeUtc)" Format="yyyy-MM-dd HH:mm:ss.fff" Sortable="true"/>
+</FluentDataGrid>
+
+@code {
+    public sealed record SignalSourceModel
+    {
+        public required string Id { get; init; }
+        public required string Name { get; init; }
+        public required string Description { get; init; }
+        public required string Visibility { get; init; }
+        public required DateTimeOffset CreatedTimeUtc { get; init; }
+    }
+
+    private IQueryable<SignalSourceModel> signalSources;
+
+    protected override async Task OnInitializedAsync()
+    {
+        signalSources = new List<SignalSourceModel>
+        {
+            new()
+            {
+                Id = "TV-Long-Task",
+                Name = "TV Long Task",
+                Description = "TV Long Task Description",
+                Visibility = "Public",
+                CreatedTimeUtc = DateTimeOffset.UtcNow,
+            },
+            new()
+            {
+                Id = "TV-Short-Task",
+                Name = "TV Short Task",
+                Description = "TV Short Task Description",
+                Visibility = "Private",
+                CreatedTimeUtc = DateTimeOffset.UtcNow,
+            },
+        }.AsQueryable();
+    }
+}
